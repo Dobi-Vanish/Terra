@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Классы персонажей</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Ваш CSS файл -->
+    <link rel="stylesheet" href="your-styles.css">
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container">
+        <a class="navbar-brand" href="index.html">RPG Мир</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="index.html">Главная</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="races.html">Расы</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" href="classes.html">Классы</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="religions.html">Религии</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="applications.html">Анкеты</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="mechanics.html">Механики</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="abilities.html">Способности</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="sheet.html">Лист игрока</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<div class="container py-4">
+    <!-- Заголовок страницы -->
+    <div class="row mb-4">
+        <div class="col-12">
+            <div class="p-4 bg-light border-radius-lg">
+                <h1 class="display-4 text-center text-primary mb-3">Классы персонажей</h1>
+                <hr class="my-4">
+                <div class="row">
+                    <div class="col-md-8 mx-auto">
+                        <div class="card border-0 bg-transparent">
+                            <div class="card-body">
+                                <p class="card-text"><strong>Класс</strong> – это стартовый набор навыков и стартовый путь развития Вашего персонажа. Определяет базовые навыки и снаряжение, но свой путь в мире определяете Вы сами, и кем Вы станете в конце своего пути, покажет лишь время.</p>
+                                <p class="card-text">Базовые навыки классов не используют ячейки навыков персонажа.</p>
+                                <p class="card-text"><strong>Архетип</strong> – особый путь развития класса, требующий определенной прокачки и условий. Архетипы есть не у всех классов, сужают разнообразие выбора на пути развития, но приносят свои уникальные бонусы.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Физические классы -->
+    <div class="row mb-4">
+        <div class="col-12">
+            <div class="card race-card">
+                <div class="card-header bg-primary text-white">
+                    <h2 class="h4 mb-0">Физические классы</h2>
+                </div>
+                <div class="card-body">
+                    <p class="card-text">Большая часть навыков имеет физическую природу. Не требуют открытого аспекта для использования навыков.</p>
+
+                    <!-- Авантюрист -->
+                    <div class="card mb-3">
+                        <div class="card-header bg-light">
+                            <h3 class="h5 mb-0">1. Авантюрист</h3>
+                        </div>
+                        <div class="card-body">
+                            <p class="card-text">– универсальный стартовый «класс без класса». В развитии предпочитает сбалансированность в статах, но набирает кучу навыков из деревьев развития других классов. Не имеет архетипов.</p>
+                            <p class="card-text"><strong>Оружие:</strong> простое (посохи, дубины, кинжалы, короткие мечи, топоры, арбалеты), метательное (ножи, топоры, дротики), пороховое (пистоли, мушкетоны).</p>
+                            <p class="card-text"><strong>Доспехи:</strong> нет навыков ношения.</p>
+                            <h6 class="mt-3">Базовые навыки:</h6>
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item"><strong><a href="abilities.html#bandaging">Перевязка</a></strong> – при наличии бинта накладывает исцеление 1д12 на 6 ходов, оставляет кровотечение</li>
+                                <li class="list-group-item"><strong><a href="abilities.html#self-study">Самообучение</a></strong> – авантюрист способен изучить 3 навыка без помощи специализированных учебников и наставников</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Воин -->
+                    <div class="card mb-3">
+                        <div class="card-header bg-light">
+                            <h3 class="h5 mb-0">2. Воин</h3>
+                        </div>
+                        <div class="card-body">
+                            <p class="card-text">– универсальный боец, обученный выживанию в сражениях. Может развиваться через комбинацию любых физических статов. Его навыки связаны с используемыми доспехами и оружием, взаимодействием с соратниками и направлены на повышение эффективности в бою.</p>
+                            <p class="card-text"><strong>Оружие:</strong> простое (посохи, дубины, кинжалы, короткие мечи, топоры, арбалеты), боевое (мечи, сабли, булавы, луки), пороховое (пистоли, мушкетоны), цепное, двуручное, древковое, метательное (ножи, топоры, дротики).</p>
+                            <p class="card-text">Так же может использовать щиты малые, средние, большие и осадные.</p>
+                            <p class="card-text"><strong>Доспехи:</strong> легкие, средние, тяжелые.</p>
+                            <h6 class="mt-3">Базовые навыки:</h6>
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item"><strong>Чувство плеча</strong> – В строю с персонажами, имеющими этот навык получает бонусы к воле. Меньшее влияние штрафов на волю, первый штрафной бросок не под 1\2 стата, а под 2\3.</li>
+                                <li class="list-group-item"><strong>Опытный боец</strong> – Открывает 2 навыка связанных с выбранным базовым оружием.</li>
+                            </ul>
+
+                            <div class="mt-4">
+                                <h6 class="text-primary">Возможные архетипы:</h6>
+                                <div class="accordion" id="warriorArchetypes">
+                                    <div class="accordion-item">
+                                        <h2 class="accordion-header">
+                                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#warrior1">
+                                                Живущий в бою
+                                            </button>
+                                        </h2>
+                                        <div id="warrior1" class="accordion-collapse collapse" data-bs-parent="#warriorArchetypes">
+                                            <div class="accordion-body">
+                                                <p>Навыки Вашего персонажа превратили его в мощнейшую боевую машину, получающую массу бонусов от участия в самых безвыходных сражениях, что позволяет ему выходить из битвы победителем.</p>
+                                                <p><strong>Требования:</strong></p>
+                                                <ul>
+                                                    <li>3 физических стата развиты на 20 единиц</li>
+                                                    <li>Открыты навыки: «духовная броня», «Стальная воля», «экспертное владение оружием»</li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="accordion-item">
+                                        <h2 class="accordion-header">
+                                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#warrior2">
+                                                Вечный воитель
+                                            </button>
+                                        </h2>
+                                        <div id="warrior2" class="accordion-collapse collapse" data-bs-parent="#warriorArchetypes">
+                                            <div class="accordion-body">
+                                                <p>Вы известны как непревзойденный стратег и боевой лидер. Отряд под вашим руководством может совершить чудо и разбить многократно превосходящие силы врага. Использует свой голос как орудие для наложения бафов на союзников и дебафов на врага.</p>
+                                                <p><strong>Требования:</strong></p>
+                                                <ul>
+                                                    <li>2 физических стата развиты на 20 единиц</li>
+                                                    <li>Воля и харизма развиты на 15 единиц</li>
+                                                    <li>Открыты навыки: «Рупор», «Объединенная воля», «акустический удар»</li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Варвар -->
+                    <div class="card mb-3">
+                        <div class="card-header bg-light">
+                            <h3 class="h5 mb-0">3. Варвар</h3>
+                        </div>
+                        <div class="card-body">
+                            <p class="card-text">– подвижный боец, полагающийся в бою на подвижность и натиск. Его навыки увеличивают способность перемещаться по полю сражения и усиливают первые атаки.</p>
+                            <p class="card-text"><strong>Оружие:</strong> простое (посохи, дубины, кинжалы, короткие мечи, топоры, арбалеты), боевое (мечи, сабли, булавы, луки), цепное, двуручное, древковое, метательное (ножи, топоры, дротики).</p>
+                            <p class="card-text">Так же может использовать щиты малые, средние.</p>
+                            <p class="card-text"><strong>Доспехи:</strong> лёгкие, средние.</p>
+                            <h6 class="mt-3">Базовые навыки:</h6>
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item"><strong>Рывок варвара</strong> – Совершает рывок в указанном направлении на 2.5 метра.</li>
+                                <li class="list-group-item"><strong>Опытный боец</strong> – Открывает 2 навыка связанных с выбранным базовым оружием.</li>
+                            </ul>
+
+                            <div class="mt-4">
+                                <h6 class="text-primary">Возможные архетипы:</h6>
+                                <div class="accordion" id="barbarianArchetypes">
+                                    <div class="accordion-item">
+                                        <h2 class="accordion-header">
+                                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#barbarian1">
+                                                Боевой вождь
+                                            </button>
+                                        </h2>
+                                        <div id="barbarian1" class="accordion-collapse collapse" data-bs-parent="#barbarianArchetypes">
+                                            <div class="accordion-body">
+                                                <p>Ваше присутствие на поле боя в первых рядах само по себе может деморализовать противника и поднять дух союзникам.</p>
+                                                <p><strong>Требования:</strong></p>
+                                                <ul>
+                                                    <li>2 физических стата развиты на 20 единиц</li>
+                                                    <li>Воля и харизма развиты на 15 единиц</li>
+                                                    <li>Открыты навыки: «Рупор», «Звериная харизма», «Боевой клич (экспертное)»</li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="accordion-item">
+                                        <h2 class="accordion-header">
+                                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#barbarian2">
+                                                Берсерк
+                                            </button>
+                                        </h2>
+                                        <div id="barbarian2" class="accordion-collapse collapse" data-bs-parent="#barbarianArchetypes">
+                                            <div class="accordion-body">
+                                                <p>Способный игнорировать преграды и урон боец на короткое время становящийся источником огромной угрозы.</p>
+                                                <p><strong>Требования:</strong></p>
+                                                <ul>
+                                                    <li>2 физических стата развиты на 15 единиц</li>
+                                                    <li>Воля и дух развиты на 20 единиц</li>
+                                                    <li>Открыты навыки: «Истинная вера», «Ярость», «Боевой клич (базовое)»</li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Вор -->
+                    <div class="card mb-3">
+                        <div class="card-header bg-light">
+                            <h3 class="h5 mb-0">4. Вор</h3>
+                        </div>
+                        <div class="card-body">
+                            <p class="card-text">– специалист по скрытному избавлению окружающих от «излишних» благ, обнаружению ловушек и взлому замков. Предпочитает как можно реже попадать в щекотливые ситуации. Его набор навыков направлен на избегание драк и скрытное передвижение.</p>
+                            <p class="card-text"><strong>Оружие:</strong> простое (посохи, дубины, кинжалы, короткие мечи, топоры, арбалеты), метательное (ножи, топоры, дротики).</p>
+                            <p class="card-text"><strong>Доспехи:</strong> легкие.</p>
+                            <h6 class="mt-3">Базовые навыки:</h6>
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item"><strong>Вскрытие замков (базовое)</strong> – Позволяет отмычкой вскрывать не сложные замки.</li>
+                                <li class="list-group-item"><strong>Липкие пальцы</strong> – Базовый навык карманных краж.</li>
+                                <li class="list-group-item"><strong>Лёгкий шаг (базовый)</strong> – Позволяет тихо передвигаться по твёрдым и сыпучим грунтам.</li>
+                                <li class="list-group-item"><strong>Обнаружение ловушек (базовое)</strong> – Позволяет обнаруживать простейшие ловушки.</li>
+                            </ul>
+
+                            <div class="mt-4">
+                                <h6 class="text-primary">Возможные архетипы:</h6>
+                                <div class="accordion" id="thiefArchetypes">
+                                    <div class="accordion-item">
+                                        <h2 class="accordion-header">
+                                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#thief1">
+                                                Ходящий в тенях
+                                            </button>
+                                        </h2>
+                                        <div id="thief1" class="accordion-collapse collapse" data-bs-parent="#thiefArchetypes">
+                                            <div class="accordion-body">
+                                                <p>Там, где на пути света возникает преграда появляется тень. Даже малая тень может дать укрытие от постороннего взгляда.</p>
+                                                <p><strong>Требования:</strong></p>
+                                                <ul>
+                                                    <li>Реакция, восприятие и дух развиты на 20 очков</li>
+                                                    <li>Открыты навыки: «скрытность (экспертная)», «лёгкий шаг (экспертный)», «плащ тени»</li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="accordion-item">
+                                        <h2 class="accordion-header">
+                                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#thief2">
+                                                Медвежатник
+                                            </button>
+                                        </h2>
+                                        <div id="thief2" class="accordion-collapse collapse" data-bs-parent="#thiefArchetypes">
+                                            <div class="accordion-body">
+                                                <p>Замки и ловушки боятся вашего присутствия. Только самые замудренные из них могут заставить вас немного задуматься.</p>
+                                                <p><strong>Требования:</strong></p>
+                                                <ul>
+                                                    <li>Реакция, восприятие и мудрость развиты на 20 очков</li>
+                                                    <li>Открыты навыки: «вскрытие замков (экспертное)», «обнаружение ловушек (экспертное)», «магические ловушки (экспертное)»</li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Разбойник -->
+                    <div class="card mb-3">
+                        <div class="card-header bg-light">
+                            <h3 class="h5 mb-0">5. Разбойник</h3>
+                        </div>
+                        <div class="card-body">
+                            <p class="card-text">– специалист по грязным приёмам, как в бою, так и на пути к обогащению. Разбойник прямому столкновению предпочитает разнообразные трюки, но вполне способен постоять за себя и в сшибке.</p>
+                            <p class="card-text"><strong>Оружие:</strong> простое (посохи, дубины, кинжалы, короткие мечи, топоры, арбалеты), боевое (мечи, сабли, булавы, луки), пороховое (пистоли, мушкетоны), цепное, метательное (ножи, топоры, дротики).</p>
+                            <p class="card-text"><strong>Доспехи:</strong> легкие, средние.</p>
+                            <h6 class="mt-3">Базовые навыки:</h6>
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item"><strong>Лёгкий шаг (базовый)</strong> – Позволяет тихо передвигаться по твёрдым и сыпучим грунтам.</li>
+                                <li class="list-group-item"><strong>Ослепляющий удар</strong> – Рассекает кожу на лбу над глазами противника, что бы обильное кровотечение закрыло тому обзор.</li>
+                            </ul>
+
+                            <div class="mt-4">
+                                <h6 class="text-primary">Возможные архетипы:</h6>
+                                <div class="accordion" id="rogueArchetypes">
+                                    <div class="accordion-item">
+                                        <h2 class="accordion-header">
+                                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#rogue1">
+                                                Ассасин
+                                            </button>
+                                        </h2>
+                                        <div id="rogue1" class="accordion-collapse collapse" data-bs-parent="#rogueArchetypes">
+                                            <div class="accordion-body">
+                                                <p>Безжалостный убийца использующий весь арсенал скрытного вооружения.</p>
+                                                <p><strong>Требования:</strong></p>
+                                                <ul>
+                                                    <li>Ловкость и сила развиты на 15 очков</li>
+                                                    <li>Реакция и восприятие развиты на 15 очков</li>
+                                                    <li>Открыты навыки: «скрытность (экспертная)», «лёгкий шаг (экспертный)», «мастер ядов»</li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="accordion-item">
+                                        <h2 class="accordion-header">
+                                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#rogue2">
+                                                Клинок тени
+                                            </button>
+                                        </h2>
+                                        <div id="rogue2" class="accordion-collapse collapse" data-bs-parent="#rogueArchetypes">
+                                            <div class="accordion-body">
+                                                <p>Ваш арсенал пополнен магическими уловками. Не важно покупными или же собственными.</p>
+                                                <p><strong>Требования:</strong></p>
+                                                <ul>
+                                                    <li>Реакция, восприятие и мудрость развиты на 20 очков</li>
+                                                    <li>Дух развит на 15 очков, открыт и развит аспект</li>
+                                                    <li>Открыты навыки: «скрытность (экспертная)», «прикладная артефакторика (экспертное)», «стер ядов»</li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Мультиклассы -->
+    <div class="row mb-4">
+        <div class="col-12">
+            <div class="card race-card">
+                <div class="card-header bg-success text-white">
+                    <h2 class="h4 mb-0">Мультиклассы</h2>
+                </div>
+                <div class="card-body">
+                    <p class="card-text">Это классы часть навыков которых основана на физических свойствах мира, а часть на магических. Проявление магических навыков требует открытого аспекта.</p>
+
+                    <!-- Здесь аналогично добавляются карточки для мультиклассов -->
+                    <!-- Бард, Следопыт, Монах, Паладин, Магус -->
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Магические классы -->
+    <div class="row mb-4">
+        <div class="col-12">
+            <div class="card race-card">
+                <div class="card-header bg-warning text-dark">
+                    <h2 class="h4 mb-0">Магические классы</h2>
+                </div>
+                <div class="card-body">
+                    <blockquote class="blockquote bg-light p-3 border-radius-lg">
+                        <p class="mb-0">«Аспект это ключ, что отворяет Исток, ведущий Тропою на Путь в Царство к Престолу, что способен занять лишь Возвысившийся»</p>
+                    </blockquote>
+                    <p class="card-text">Магические классы делятся на 2 группы.</p>
+                    <p class="card-text"><strong>Аспектированные маги</strong> – те, кто самостоятельно взаимодействует с магической средой, используя собственные аспекты силы. Они напрямую пропускают через себя магическую энергию, аккумулируют ее в собственном организме.</p>
+                    <p class="card-text"><strong>Неаспектированные маги</strong> – те, кто взаимодействует с магической средой, используя чужие аспекты силы. Они пропускают через себя магическую энергию, но не могут аккумулировать ее в своём организме, а лишь передают её в окружающий мир.</p>
+
+                    <!-- Здесь аналогично добавляются карточки для магических классов -->
+                    <!-- Стихийный Маг, Некромант, Друид, Колдун, Чернокнижник, Чародей, Жрец, Шаман -->
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

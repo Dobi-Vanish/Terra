@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Механики - RPG Мир</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container">
+        <a class="navbar-brand" href="index.html">RPG Мир</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="index.html">Главная</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="races.html">Расы</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="classes.html">Классы</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="religions.html">Религии</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="applications.html">Анкеты</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" href="mechanics.html">Механики</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="abilities.html">Способности</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="sheet.html">Лист игрока</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<div class="container mt-4">
+    <h1>🎲 Игровые механики</h1>
+    <p class="lead">Правила и системы для комфортной игры</p>
+
+    <div class="accordion mt-4" id="mechanicsAccordion">
+        <div class="accordion-item">
+            <h2 class="accordion-header">
+                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#combat">
+                    ⚔️ Боевая система
+                </button>
+            </h2>
+            <div id="combat" class="accordion-collapse collapse show" data-bs-parent="#mechanicsAccordion">
+                <div class="accordion-body">
+                    <h5>Основные правила боя:</h5>
+                    <ul>
+                        <li><strong>Инициатива:</strong> Определяется броском d20 + модификатор ловкости</li>
+                        <li><strong>Атака:</strong> Бросок d20 + модификатор атаки против защиты цели</li>
+                        <li><strong>Критический удар:</strong> При выпадении 20 на кубике атаки</li>
+                        <li><strong>Действия в ход:</strong> Движение, действие и бонусное действие</li>
+                    </ul>
+                    <div class="alert alert-info">
+                        <strong>Пример:</strong> Воин с силой +3 атакует мечом (1d8). Бросок атаки: 15 + 3 = 18. Если защита цели 16, то попадание. Урон: 5 (из 1d8) + 3 = 8 урона.
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="accordion-item">
+            <h2 class="accordion-header">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#magic">
+                    🔮 Магическая система
+                </button>
+            </h2>
+            <div id="magic" class="accordion-collapse collapse" data-bs-parent="#mechanicsAccordion">
+                <div class="accordion-body">
+                    <h5>Работа с магией:</h5>
+                    <ul>
+                        <li><strong>Ячейки заклинаний:</strong> Ограниченное количество заклинаний в день</li>
+                        <li><strong>Подготовка заклинаний:</strong> Волшебники готовят заклинания после отдыха</li>
+                        <li><strong>Концентрация:</strong> Некоторые заклинания требуют концентрации</li>
+                        <li><strong>Спасброски:</strong> Цели делают спасброски против СЛ заклинания</li>
+                    </ul>
+                    <table class="table table-sm">
+                        <thead>
+                        <tr>
+                            <th>Уровень заклинания</th>
+                            <th>Минимальный уровень</th>
+                            <th>Примеры заклинаний</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td>1-й круг</td>
+                            <td>1</td>
+                            <td>Волшебная стрела, Лечение ран</td>
+                        </tr>
+                        <tr>
+                            <td>2-й круг</td>
+                            <td>3</td>
+                            <td>Огненный шар, Невидимость</td>
+                        </tr>
+                        <tr>
+                            <td>3-й круг</td>
+                            <td>5</td>
+                            <td>Молния, Воскрешение мертвых</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <div class="accordion-item">
+            <h2 class="accordion-header">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#skills">
+                    🎯 Навыки и проверки
+                </button>
+            </h2>
+            <div id="skills" class="accordion-collapse collapse" data-bs-parent="#mechanicsAccordion">
+                <div class="accordion-body">
+                    <h5>Система навыков:</h5>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <ul>
+                                <li><strong>Атлетика (Сила):</strong> Лазание, плавание, прыжки</li>
+                                <li><strong>Акробатика (Ловкость):</strong> Кувырки, баланс</li>
+                                <li><strong>Скрытность (Ловкость):</strong> Прятаться, двигаться бесшумно</li>
+                                <li><strong>Магия (Интеллект):</strong> Знание магии, идентификация</li>
+                            </ul>
+                        </div>
+                        <div class="col-md-6">
+                            <ul>
+                                <li><strong>Выживание (Мудрость):</strong> Ориентирование, следы</li>
+                                <li><strong>Проницательность (Мудрость):</strong> Обнаружение обмана</li>
+                                <li><strong>Убеждение (Харизма):</strong> Уговоры, дипломатия</li>
+                                <li><strong>Обман (Харизма):</strong> Ложь, маскировка</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="accordion-item">
+            <h2 class="accordion-header">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#economy">
+                    💰 Экономика и крафт
+                </button>
+            </h2>
+            <div id="economy" class="accordion-collapse collapse" data-bs-parent="#mechanicsAccordion">
+                <div class="accordion-body">
+                    <h5>Денежная система:</h5>
+                    <ul>
+                        <li>Медь (cp) - 1 серебро = 10 меди</li>
+                        <li>Серебро (sp) - 1 золото = 10 серебра</li>
+                        <li>Золото (gp) - основная валюта</li>
+                        <li>Платина (pp) - 1 платина = 10 золота</li>
+                    </ul>
+
+                    <h5 class="mt-3">Крафт предметов:</h5>
+                    <div class="table-responsive">
+                        <table class="table table-striped">
+                            <thead>
+                            <tr>
+                                <th>Предмет</th>
+                                <th>Стоимость</th>
+                                <th>Время крафта</th>
+                                <th>Необходимые навыки</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <td>Простое оружие</td>
+                                <td>10 gp</td>
+                                <td>3 дня</td>
+                                <td>Кузнечное дело</td>
+                            </tr>
+                            <tr>
+                                <td>Зелье лечения</td>
+                                <td>25 gp</td>
+                                <td>1 день</td>
+                                <td>Алхимия</td>
+                            </tr>
+                            <tr>
+                                <td>Кожаная броня</td>
+                                <td>45 gp</td>
+                                <td>5 дней</td>
+                                <td>Кожевничество</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<footer class="bg-dark text-light mt-5 py-4">
+    <div class="container text-center">
+        <p>&copy; 2024 RPG Мир. Все права защищены.</p>
+    </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="js/script.js"></script>
+</body>
+</html>

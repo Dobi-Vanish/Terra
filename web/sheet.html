@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Лист персонажа</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container">
+        <a class="navbar-brand" href="index.html">RPG Мир</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="index.html">Главная</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="races.html">Расы</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="classes.html">Классы</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link " href="religions.html">Религии</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="applications.html">Анкеты</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="mechanics.html">Механики</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="abilities.html">Способности</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" href="sheet.html">Лист игрока</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<div class="container py-4">
+    <div class="jumbotron text-white mb-4 p-4 border-radius-lg">
+        <h1 class="display-4 text-shadow">Лист персонажа</h1>
+        <p class="lead">Заполните информацию о вашем персонаже</p>
+    </div>
+
+    <!-- Основная информация о персонаже -->
+    <div class="card mb-4">
+        <div class="card-header bg-primary text-white">
+            <h3 class="mb-0">Основная информация</h3>
+        </div>
+        <div class="card-body">
+            <div class="row">
+                <div class="col-md-6 mb-3">
+                    <label for="characterName" class="form-label">Имя персонажа</label>
+                    <input type="text" class="form-control" id="characterName" placeholder="Введите имя">
+                </div>
+                <div class="col-md-3 mb-3">
+                    <label for="characterRace" class="form-label">Раса</label>
+                    <input type="text" class="form-control" id="characterRace" placeholder="Раса">
+                </div>
+                <div class="col-md-3 mb-3">
+                    <label for="characterClass" class="form-label">Класс</label>
+                    <input type="text" class="form-control" id="characterClass" placeholder="Класс">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4 mb-3">
+                    <label for="characterHeight" class="form-label">Рост</label>
+                    <input type="text" class="form-control" id="characterHeight" placeholder="Рост">
+                </div>
+                <div class="col-md-4 mb-3">
+                    <label for="characterWeight" class="form-label">Вес</label>
+                    <input type="text" class="form-control" id="characterWeight" placeholder="Вес">
+                </div>
+                <div class="col-md-4 mb-3">
+                    <label for="characterAge" class="form-label">Возраст</label>
+                    <input type="text" class="form-control" id="characterAge" placeholder="Возраст">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Характеристики персонажа -->
+    <div class="card mb-4">
+        <div class="card-header bg-primary text-white">
+            <h3 class="mb-0">Характеристики персонажа</h3>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-hover">
+                    <thead>
+                    <tr>
+                        <th>Характеристика</th>
+                        <th>Значение</th>
+                        <th>Модификатор</th>
+                        <th>Итоговое значение</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>Сила</td>
+                        <td><input type="number" class="form-control attr-value" min="5" max="20" step="0.1" data-attr="strength"></td>
+                        <td><input type="number" class="form-control attr-modifier" step="0.1" data-attr="strength"></td>
+                        <td><span class="attr-total" data-attr="strength">0</span></td>
+                    </tr>
+                    <tr>
+                        <td>Телосложение</td>
+                        <td><input type="number" class="form-control attr-value" min="5" max="20" step="0.1" data-attr="constitution"></td>
+                        <td><input type="number" class="form-control attr-modifier" step="0.1" data-attr="constitution"></td>
+                        <td><span class="attr-total" data-attr="constitution">0</span></td>
+                    </tr>
+                    <tr>
+                        <td>Выносливость</td>
+                        <td><input type="number" class="form-control attr-value" min="5" max="20" step="0.1" data-attr="endurance"></td>
+                        <td><input type="number" class="form-control attr-modifier" step="0.1" data-attr="endurance"></td>
+                        <td><span class="attr-total" data-attr="endurance">0</span></td>
+                    </tr>
+                    <tr>
+                        <td>Ловкость</td>
+                        <td><input type="number" class="form-control attr-value" min="5" max="20" step="0.1" data-attr="dexterity"></td>
+                        <td><input type="number" class="form-control attr-modifier" step="0.1" data-attr="dexterity"></td>
+                        <td><span class="attr-total" data-attr="dexterity">0</span></td>
+                    </tr>
+                    <tr>
+                        <td>Реакция</td>
+                        <td><input type="number" class="form-control attr-value" min="5" max="20" step="0.1" data-attr="reaction"></td>
+                        <td><input type="number" class="form-control attr-modifier" step="0.1" data-attr="reaction"></td>
+                        <td><span class="attr-total" data-attr="reaction">0</span></td>
+                    </tr>
+                    <tr>
+                        <td>Восприятие</td>
+                        <td><input type="number" class="form-control attr-value" min="5" max="20" step="0.1" data-attr="perception"></td>
+                        <td><input type="number" class="form-control attr-modifier" step="0.1" data-attr="perception"></td>
+                        <td><span class="attr-total" data-attr="perception">0</span></td>
+                    </tr>
+                    <tr>
+                        <td>Интеллект</td>
+                        <td><input type="number" class="form-control attr-value" min="5" max="20" step="0.1" data-attr="intelligence"></td>
+                        <td><input type="number" class="form-control attr-modifier" step="0.1" data-attr="intelligence"></td>
+                        <td><span class="attr-total" data-attr="intelligence">0</span></td>
+                    </tr>
+                    <tr>
+                        <td>Мудрость</td>
+                        <td><input type="number" class="form-control attr-value" min="5" max="20" step="0.1" data-attr="wisdom"></td>
+                        <td><input type="number" class="form-control attr-modifier" step="0.1" data-attr="wisdom"></td>
+                        <td><span class="attr-total" data-attr="wisdom">0</span></td>
+                    </tr>
+                    <tr>
+                        <td>Воля</td>
+                        <td><input type="number" class="form-control attr-value" min="5" max="20" step="0.1" data-attr="willpower"></td>
+                        <td><input type="number" class="form-control attr-modifier" step="0.1" data-attr="willpower"></td>
+                        <td><span class="attr-total" data-attr="willpower">0</span></td>
+                    </tr>
+                    <tr>
+                        <td>Дух</td>
+                        <td><input type="number" class="form-control attr-value" min="5" max="20" step="0.1" data-attr="spirit"></td>
+                        <td><input type="number" class="form-control attr-modifier" step="0.1" data-attr="spirit"></td>
+                        <td><span class="attr-total" data-attr="spirit">0</span></td>
+                    </tr>
+                    <tr>
+                        <td>Харизма</td>
+                        <td><input type="number" class="form-control attr-value" min="5" max="20" step="0.1" data-attr="charisma"></td>
+                        <td><input type="number" class="form-control attr-modifier" step="0.1" data-attr="charisma"></td>
+                        <td><span class="attr-total" data-attr="charisma">0</span></td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!-- Производные характеристики -->
+    <div class="row mb-4">
+        <div class="col-md-6">
+            <div class="card bg-light">
+                <div class="card-body">
+                    <h5 class="card-title">Производные характеристики</h5>
+                    <div class="row">
+                        <div class="col-6">
+                            <strong>Хитпоинты:</strong>
+                        </div>
+                        <div class="col-6">
+                            <span id="hpTotal">0</span>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-6">
+                            <strong>Манапоинты:</strong>
+                        </div>
+                        <div class="col-6">
+                            <span id="manaTotal">0</span>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-6">
+                            <strong>Инициатива:</strong>
+                        </div>
+                        <div class="col-6">
+                            <span id="initiativeTotal">0</span>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-6">
+                            <strong>Точность:</strong>
+                        </div>
+                        <div class="col-6">
+                            <span id="accuracyTotal">0</span>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-6">
+                            <strong>Импульс массы:</strong>
+                        </div>
+                        <div class="col-6">
+                            <span id="massImpulseTotal">0</span>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-6">
+                            <strong>Ячейки навыков:</strong>
+                        </div>
+                        <div class="col-6">
+                            <span id="skillSlots">0</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Форма для добавления вещей -->
+    <div class="card mb-4">
+        <div class="card-header bg-success text-white">
+            <h3 class="mb-0">Инвентарь персонажа</h3>
+        </div>
+        <div class="card-body">
+            <div class="mb-3">
+                <button type="button" class="btn btn-success" id="addItemBtn">
+                    + Добавить вещь
+                </button>
+                <button type="button" class="btn btn-outline-danger" id="clearAllItems">
+                    Очистить все
+                </button>
+            </div>
+
+            <div class="table-responsive">
+                <table class="table table-hover" id="itemsTable">
+                    <thead>
+                    <tr>
+                        <th>Наименование</th>
+                        <th>Кол-во</th>
+                        <th>Стоимость</th>
+                        <th>Описание</th>
+                        <th>Действия</th>
+                    </tr>
+                    </thead>
+                    <tbody id="itemsTableBody">
+                    <!-- Строки будут добавляться динамически -->
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="mt-3">
+                <strong>Общая стоимость инвентаря: </strong>
+                <span id="totalCost">0</span> монет
+            </div>
+        </div>
+    </div>
+
+    <!-- Кнопки сохранения -->
+    <div class="mt-4">
+        <button type="button" class="btn btn-primary me-2" id="saveCharacter">Сохранить персонажа</button>
+        <button type="button" class="btn btn-secondary" id="resetForm">Сбросить</button>
+    </div>
+</div>
+
+<footer class="bg-dark text-white text-center py-3 mt-5">
+    <div class="container">
+        <p class="mb-0">Лист персонажа RPG &copy; 2023</p>
+    </div>
+</footer>
+
+<script>
+    // Функция для расчета итогового значения характеристики
+    function calculateTotal(attr) {
+        const valueInput = document.querySelector(`.attr-value[data-attr="${attr}"]`);
+        const modifierInput = document.querySelector(`.attr-modifier[data-attr="${attr}"]`);
+        const totalSpan = document.querySelector(`.attr-total[data-attr="${attr}"]`);
+
+        const value = parseFloat(valueInput.value) || 0;
+        const modifier = parseFloat(modifierInput.value) || 0;
+
+        const total = value + modifier;
+        totalSpan.textContent = total.toFixed(1);
+
+        // Обновляем производные характеристики
+        updateDerivedStats();
+    }
+
+    // Функция для обновления производных характеристик
+    function updateDerivedStats() {
+        // Получаем значения характеристик
+        const strength = parseFloat(document.querySelector('.attr-total[data-attr="strength"]').textContent) || 0;
+        const constitution = parseFloat(document.querySelector('.attr-total[data-attr="constitution"]').textContent) || 0;
+        const endurance = parseFloat(document.querySelector('.attr-total[data-attr="endurance"]').textContent) || 0;
+        const dexterity = parseFloat(document.querySelector('.attr-total[data-attr="dexterity"]').textContent) || 0;
+        const intelligence = parseFloat(document.querySelector('.attr-total[data-attr="intelligence"]').textContent) || 0;
+        const willpower = parseFloat(document.querySelector('.attr-total[data-attr="willpower"]').textContent) || 0;
+        const spirit = parseFloat(document.querySelector('.attr-total[data-attr="spirit"]').textContent) || 0;
+
+        // Расчет производных характеристик (примерные формулы)
+        document.getElementById('hpTotal').textContent = Math.floor(constitution * 2 + endurance);
+        document.getElementById('manaTotal').textContent = Math.floor(intelligence + willpower + spirit);
+        document.getElementById('initiativeTotal').textContent = Math.floor(dexterity / 2);
+        document.getElementById('accuracyTotal').textContent = Math.floor(dexterity + intelligence / 2);
+        document.getElementById('massImpulseTotal').textContent = Math.floor(strength + constitution);
+        document.getElementById('skillSlots').textContent = Math.floor(intelligence / 2);
+    }
+
+    // Функции для работы с инвентарем
+    let itemCounter = 0;
+
+    function addItem() {
+        itemCounter++;
+        const tbody = document.getElementById('itemsTableBody');
+        const newRow = document.createElement('tr');
+        newRow.innerHTML = `
+                <td>
+                    <input type="text" class="form-control item-name" placeholder="Наименование">
+                </td>
+                <td>
+                    <input type="number" class="form-control item-quantity" placeholder="0" min="0" step="1">
+                </td>
+                <td>
+                    <input type="number" class="form-control item-price" placeholder="0" min="0" step="0.01">
+                </td>
+                <td>
+                    <input type="text" class="form-control item-description" placeholder="Описание">
+                </td>
+                <td>
+                    <button type="button" class="btn btn-sm btn-outline-danger remove-item">
+                        Удалить
+                    </button>
+                </td>
+            `;
+        tbody.appendChild(newRow);
+
+        // Добавляем обработчики событий для новой строки
+        const quantityInput = newRow.querySelector('.item-quantity');
+        const priceInput = newRow.querySelector('.item-price');
+
+        quantityInput.addEventListener('input', updateTotalCost);
+        priceInput.addEventListener('input', updateTotalCost);
+
+        newRow.querySelector('.remove-item').addEventListener('click', function() {
+            this.closest('tr').remove();
+            updateTotalCost();
+        });
+    }
+
+    function updateTotalCost() {
+        let total = 0;
+        const rows = document.querySelectorAll('#itemsTableBody tr');
+
+        rows.forEach(row => {
+            const quantity = parseFloat(row.querySelector('.item-quantity').value) || 0;
+            const price = parseFloat(row.querySelector('.item-price').value) || 0;
+            total += quantity * price;
+        });
+
+        document.getElementById('totalCost').textContent = total.toFixed(2);
+    }
+
+    function clearAllItems() {
+        if (confirm('Вы уверены, что хотите удалить все вещи из инвентаря?')) {
+            document.getElementById('itemsTableBody').innerHTML = '';
+            updateTotalCost();
+        }
+    }
+
+    // Добавляем обработчики событий для всех полей ввода характеристик
+    document.querySelectorAll('.attr-value, .attr-modifier').forEach(input => {
+        input.addEventListener('input', function() {
+            const attr = this.getAttribute('data-attr');
+            calculateTotal(attr);
+        });
+    });
+
+    // Обработчики для инвентаря
+    document.getElementById('addItemBtn').addEventListener('click', addItem);
+    document.getElementById('clearAllItems').addEventListener('click', clearAllItems);
+
+    // Обработчик для кнопки сохранения
+    document.getElementById('saveCharacter').addEventListener('click', function() {
+        alert('Персонаж сохранен!');
+        // Здесь можно добавить логику для сохранения данных
+    });
+
+    // Обработчик для кнопки сброса
+    document.getElementById('resetForm').addEventListener('click', function() {
+        if (confirm('Вы уверены, что хотите сбросить все данные?')) {
+            document.querySelectorAll('input').forEach(input => {
+                input.value = '';
+            });
+            document.querySelectorAll('.attr-total').forEach(span => {
+                span.textContent = '0';
+            });
+            document.getElementById('itemsTableBody').innerHTML = '';
+            updateTotalCost();
+            updateDerivedStats();
+        }
+    });
+
+    // Инициализация при загрузке страницы
+    document.addEventListener('DOMContentLoaded', function() {
+        updateDerivedStats();
+        // Добавляем первую пустую строку для вещей
+        addItem();
+    });
+</script>
+</body>
+</html>

@@ -1,0 +1,1119 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Расы мира</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Ваш CSS файл -->
+    <link rel="stylesheet" href="your-styles.css">
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container">
+        <a class="navbar-brand" href="index.html">RPG Мир</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="index.html">Главная</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" href="races.html">Расы</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="classes.html">Классы</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="religions.html">Религии</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="applications.html">Анкеты</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="mechanics.html">Механики</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="abilities.html">Способности</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="sheet.html">Лист игрока</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<div class="container py-4">
+    <!-- Заголовок страницы -->
+    <div class="row mb-4">
+        <div class="col-12">
+            <div class="p-4 bg-light border-radius-lg">
+                <h1 class="display-4 text-center text-primary mb-3">Расы мира</h1>
+                <hr class="my-4">
+                <div class="row">
+                    <div class="col-md-8 mx-auto">
+                        <div class="card border-0 bg-transparent">
+                            <div class="card-body">
+                                <p class="card-text">Расы определяют физические и ментальные особенности вашего персонажа, его происхождение и врожденные способности. Каждая раса обладает уникальными характеристиками, которые влияют на игровой процесс и развитие персонажа.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Люди -->
+    <div class="row mb-4">
+        <div class="col-12">
+            <div class="card race-card">
+                <div class="card-header bg-primary text-white">
+                    <h2 class="h4 mb-0">Человек</h2>
+                </div>
+                <div class="card-body">
+                    <p class="card-text">Раса, начавшая свой путь с северо-западного архипелага, вынужденная перебираться на материк из-за магической катастрофы. Расселились по северной части материка. Люди расколоты на несколько государств, ведущих грызню между собой.</p>
+
+                    <div class="accordion mt-4" id="humanGroups">
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#humanGroup1">
+                                    Терра Импера
+                                </button>
+                            </h2>
+                            <div id="humanGroup1" class="accordion-collapse collapse show" data-bs-parent="#humanGroups">
+                                <div class="accordion-body">
+                                    Крупная империя, сохранившая влияние и территории на архипелаге, протянувшаяся от северо-западных границ материка до крупнейшего горного хребта на востоке, разделяющего материк на части. Единственные имеют несколько поселений за хребтом. Объединены централизованной властью и монотеистической религией.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#humanGroup2">
+                                    Вольные города
+                                </button>
+                            </h2>
+                            <div id="humanGroup2" class="accordion-collapse collapse" data-bs-parent="#humanGroups">
+                                <div class="accordion-body">
+                                    Объединение из нескольких городов-государств с прилегающими территориями. Крупнейший из них расположен на юго-западе северного материка, на крупном полуострове, еще один прижался, окруженный рекой и болотами под восточным хребтом, третий расположился за горным ущельем на юго-востоке. Удачные для обороны местоположения и поддержка Южного Халифата позволяют городам устоять перед Империей.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#humanGroup3">
+                                    Лоскуты
+                                </button>
+                            </h2>
+                            <div id="humanGroup3" class="accordion-collapse collapse" data-bs-parent="#humanGroups">
+                                <div class="accordion-body">
+                                    Территория зажатая между всеми крупными государствами, занимающая небольшой по общим меркам перешеек, ранее принадлежавший Империи и зажатый меж заливом и внутренним морем. 36 лет бедствий, войн и болезней перемешали сторонников разных сторон, породили массу трагедий, сторонников борьбы за независимость, беженцев и разорившихся жителей. На данный момент власть представлена несколькими объединившимися военными отрядами, стремящихся к мирной жизни.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#humanGroup4">
+                                    Южный Халифат
+                                </button>
+                            </h2>
+                            <div id="humanGroup4" class="accordion-collapse collapse" data-bs-parent="#humanGroups">
+                                <div class="accordion-body">
+                                    От северных соседей отделены крупным заливом и внутренним морем, на востоке и юге ограничены пустынными территориями. Отличаются большой адаптивностью и универсальностью.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row mt-4">
+                        <div class="col-md-6">
+                            <div class="card bg-light">
+                                <div class="card-body">
+                                    <h5 class="card-title">Средние показатели</h5>
+                                    <ul class="list-group list-group-flush">
+                                        <li class="list-group-item bg-light"><strong>Рост:</strong> 165 см</li>
+                                        <li class="list-group-item bg-light"><strong>Продолжительность жизни:</strong> 80 лет</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="card bg-info text-white">
+                                <div class="card-body">
+                                    <h5 class="card-title">Ячейки навыков по уровням</h5>
+                                    <ul class="list-group list-group-flush">
+                                        <li class="list-group-item bg-info text-white"><strong>0 уровень:</strong> 4 ячейки навыка при минимальном значении интеллекта (5)</li>
+                                        <li class="list-group-item bg-info text-white"><strong>1 уровень:</strong> 9 ячеек</li>
+                                        <li class="list-group-item bg-info text-white"><strong>2 уровень:</strong> 14 ячеек</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <h5 class="mt-4">Модификаторы в зависимости от пола</h5>
+                    <div class="table-responsive mt-3">
+                        <table class="table table-striped table-bordered">
+                            <thead class="table-dark">
+                            <tr>
+                                <th>Стат</th>
+                                <th>Мужской</th>
+                                <th>Женский</th>
+                                <th>Пояснение</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <td><strong>Сила</strong></td>
+                                <td>6</td>
+                                <td>5</td>
+                                <td>Модификатор умножаем на количество стата = поднять предназначенный для этого вес двумя руками в устойчивом положении</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Телосложение</strong></td>
+                                <td>10</td>
+                                <td>10</td>
+                                <td>Модификатор умножаем на количество стата = количество хитпоинтов</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Выносливость</strong></td>
+                                <td>5</td>
+                                <td>5</td>
+                                <td>Модификатор умножаем на количество стата = пробежать спринтом не выдыхаясь</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Ловкость</strong></td>
+                                <td>1</td>
+                                <td>1</td>
+                                <td>Модификатор не влияет</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Реакция</strong></td>
+                                <td>1</td>
+                                <td>1</td>
+                                <td>Модификатор не влияет</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Восприятие</strong></td>
+                                <td>1</td>
+                                <td>1</td>
+                                <td>Модификатор не влияет</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Интеллект</strong></td>
+                                <td>0.6+1</td>
+                                <td>0.6+1</td>
+                                <td>0.6 – количество ячеек навыка за 1 очко в стате на уровень (+1 от расы – каждое 5 очко приносит 1 доп. Ячейку и каждый уровень дает + 1 ячейку)</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Мудрость</strong></td>
+                                <td>1</td>
+                                <td>1</td>
+                                <td>Модификатор не влияет</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Воля</strong></td>
+                                <td>1</td>
+                                <td>1</td>
+                                <td>Модификатор не влияет</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Дух</strong></td>
+                                <td>10</td>
+                                <td>10</td>
+                                <td>Модификатор умножаем на количество стата = количество манапоинтов</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Харизма</strong></td>
+                                <td>1</td>
+                                <td>1</td>
+                                <td>Модификатор не влияет</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Эльфы -->
+    <div class="row mb-4">
+        <div class="col-12">
+            <div class="card race-card">
+                <div class="card-header bg-success text-white">
+                    <h2 class="h4 mb-0">Эльфы</h2>
+                </div>
+                <div class="card-body">
+                    <p class="card-text">Эльф более тонкокостный, обладает звериной грацией, способен выполнять сложные акробатические трюки, говорят, что эльф может стоять на плоскости клинка, который держит его противник.</p>
+                    <p class="card-text">Живут небольшими общинами – долами. Долы делятся на: света, сумрака, тьмы и высшие долы. Долы света, сумрака и высшие сохраняют свои владения на территории северной империи людей.</p>
+
+                    <div class="accordion mt-4" id="elfDols">
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#elfDol1">
+                                    Высшие долы
+                                </button>
+                            </h2>
+                            <div id="elfDol1" class="accordion-collapse collapse show" data-bs-parent="#elfDols">
+                                <div class="accordion-body">
+                                    Являются объединениями выходцев из других долов и именно эти эльфы занимают в своём народе посты политиков, чиновников и военного руководства, а так же гвардии.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#elfDol2">
+                                    Долы света
+                                </button>
+                            </h2>
+                            <div id="elfDol2" class="accordion-collapse collapse" data-bs-parent="#elfDols">
+                                <div class="accordion-body">
+                                    Кочевые группы эльфов, путешествующие по северной равнине, это исследователи и алхимики. В боевом стиле предпочитают использовать группы боевых колесниц. Экипажами колесниц выступают сверстники и родственники, что обеспечивает большую слаженность экипажей.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#elfDol3">
+                                    Долы сумрака
+                                </button>
+                            </h2>
+                            <div id="elfDol3" class="accordion-collapse collapse" data-bs-parent="#elfDols">
+                                <div class="accordion-body">
+                                    Оседлые животноводы, что охраняют сохранившиеся священные рощи и элементы древней культуры. Обычно один дол следит за несколькими священными рощами, перебираясь между ними в зависимости от сезона.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#elfDol4">
+                                    Долы тьмы
+                                </button>
+                            </h2>
+                            <div id="elfDol4" class="accordion-collapse collapse" data-bs-parent="#elfDols">
+                                <div class="accordion-body">
+                                    Покинули ранее обжитые своим народом места и перебрались под защиту халифата. Ранее долы тьмы были оружейниками, создававшими уникальные образцы вооружения и доспехов. На данный момент часть технологий утрачена безвозвратно. Основной причиной раскола считается, то, что эльфы большинства долов решили отказаться от религии предков и принять навязываемую людьми.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row mt-4">
+                        <div class="col-md-6">
+                            <div class="card bg-light">
+                                <div class="card-body">
+                                    <h5 class="card-title">Средние показатели</h5>
+                                    <ul class="list-group list-group-flush">
+                                        <li class="list-group-item bg-light"><strong>Рост:</strong> 155 см</li>
+                                        <li class="list-group-item bg-light"><strong>Продолжительность жизни:</strong> 600 лет</li>
+                                        <li class="list-group-item bg-light"><strong>Размножение:</strong> За срок своей жизни эльфийка в среднем приносит 5-6 приплодов по 3-4 «котёнка»</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="card bg-info text-white">
+                                <div class="card-body">
+                                    <h5 class="card-title">Ячейки навыков по уровням</h5>
+                                    <ul class="list-group list-group-flush">
+                                        <li class="list-group-item bg-info text-white"><strong>0 уровень:</strong> 3 ячейки навыка при минимальном значении интеллекта (5)</li>
+                                        <li class="list-group-item bg-info text-white"><strong>1 уровень:</strong> 6 ячеек</li>
+                                        <li class="list-group-item bg-info text-white"><strong>2 уровень:</strong> 9 ячеек</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <h5 class="mt-4">Модификаторы в зависимости от пола</h5>
+                    <div class="table-responsive mt-3">
+                        <table class="table table-striped table-bordered">
+                            <thead class="table-dark">
+                            <tr>
+                                <th>Стат</th>
+                                <th>Мужской</th>
+                                <th>Женский</th>
+                                <th>Пояснение</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <td><strong>Сила</strong></td>
+                                <td>5</td>
+                                <td>4</td>
+                                <td>Модификатор умножаем на количество стата = поднять предназначенный для этого вес двумя руками в устойчивом положении</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Телосложение</strong></td>
+                                <td>9</td>
+                                <td>9</td>
+                                <td>Модификатор умножаем на количество стата = количество хитпоинтов</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Выносливость</strong></td>
+                                <td>7</td>
+                                <td>7</td>
+                                <td>Модификатор умножаем на количество стата = пробежать спринтом не выдыхаясь</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Ловкость</strong></td>
+                                <td>1.5</td>
+                                <td>1.5</td>
+                                <td>Меньшее влияние штрафов на ловкость, первый штрафной бросок не под 1\2 стата, а под 2\3</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Реакция</strong></td>
+                                <td>1</td>
+                                <td>1</td>
+                                <td>Модификатор не влияет</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Восприятие</strong></td>
+                                <td>1</td>
+                                <td>1</td>
+                                <td>Модификатор не влияет</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Интеллект</strong></td>
+                                <td>0.4</td>
+                                <td>0.4</td>
+                                <td>0.4 – количество ячеек навыка за 1 очко в стате на уровень (каждое 5 очко приносит 1 доп. Ячейку)</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Мудрость</strong></td>
+                                <td>1.5</td>
+                                <td>1.5</td>
+                                <td>Долгоживущий лучше усваивает опыт, т.к. его банально больше. Меньшее влияние штрафов на мудрость, первый штрафной бросок не под 1\2 стата, а под 2\3</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Воля</strong></td>
+                                <td>1</td>
+                                <td>1</td>
+                                <td>Модификатор не влияет</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Дух</strong></td>
+                                <td>10</td>
+                                <td>10</td>
+                                <td>Модификатор умножаем на количество стата = количество манапоинтов</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Харизма</strong></td>
+                                <td>1</td>
+                                <td>1</td>
+                                <td>Модификатор не влияет</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <h5 class="mt-4">Навыки вне ячеек</h5>
+                    <div class="row mt-3">
+                        <div class="col-md-6">
+                            <div class="card mb-3">
+                                <div class="card-header bg-success text-white">
+                                    <h6 class="mb-0">Детектор движения</h6>
+                                </div>
+                                <div class="card-body">
+                                    <p class="card-text">Глаза эльфов устроены так, что бы улавливать движущиеся объекты в условиях пониженной видимости.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="card mb-3">
+                                <div class="card-header bg-success text-white">
+                                    <h6 class="mb-0">Акробатика</h6>
+                                </div>
+                                <div class="card-body">
+                                    <p class="card-text">Из-за постоянной необходимости пробираться по сложной местности развивается навык акробатики.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Орки -->
+    <div class="row mb-4">
+        <div class="col-12">
+            <div class="card race-card">
+                <div class="card-header bg-warning text-dark">
+                    <h2 class="h4 mb-0">Орки</h2>
+                </div>
+                <div class="card-body">
+                    <p class="card-text">Коренастого телосложения с широкими плечами и бочкообразной грудью, покрытые жесткой шерстью антропоморфные создания, что расселились несколькими клановыми сообществами в совершенно различных местах.</p>
+
+                    <div class="accordion mt-4" id="orcGroups">
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#orcGroup1">
+                                    Морские орки
+                                </button>
+                            </h2>
+                            <div id="orcGroup1" class="accordion-collapse collapse show" data-bs-parent="#orcGroups">
+                                <div class="accordion-body">
+                                    Заселили западный архипелаг и образовали свободолюбивое сообщество мореходов и исследователей. Группа состоит из четырех кланов, два из них занимаются морской торговлей и ловлей рыбы, один представляет собой военную организацию наёмных мореходов, а четвертый более сосредоточен на исследовании магической составляющей мироздания. Сохраняют собственную религию.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#orcGroup2">
+                                    Горные орки
+                                </button>
+                            </h2>
+                            <div id="orcGroup2" class="accordion-collapse collapse" data-bs-parent="#orcGroups">
+                                <div class="accordion-body">
+                                    Прочно заняли земли западного залива, что расположился в центре западного горного хребта, стоящего на побережье моря и прилегающих горных долин. Религия кланов была заменена на религию человеческой Империи.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#orcGroup3">
+                                    Степные орки
+                                </button>
+                            </h2>
+                            <div id="orcGroup3" class="accordion-collapse collapse" data-bs-parent="#orcGroups">
+                                <div class="accordion-body">
+                                    Образовались из-за вмешательства людей в дела второй группы. Это не смирившиеся с потерей индивидуальности и с пришедшей к власти верхушкой, что переселились на равнину у восточного хребта. Разбросанные на большой территории смешанные редкие кланы переняли различные религиозные привычки у соседей (людей и эльфов) и обросли массой суеверий.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row mt-4">
+                        <div class="col-md-6">
+                            <div class="card bg-light">
+                                <div class="card-body">
+                                    <h5 class="card-title">Средние показатели</h5>
+                                    <ul class="list-group list-group-flush">
+                                        <li class="list-group-item bg-light"><strong>Рост:</strong> 160 см</li>
+                                        <li class="list-group-item bg-light"><strong>Продолжительность жизни:</strong> 120 лет</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="card bg-info text-white">
+                                <div class="card-body">
+                                    <h5 class="card-title">Ячейки навыков по уровням</h5>
+                                    <ul class="list-group list-group-flush">
+                                        <li class="list-group-item bg-info text-white"><strong>0 уровень:</strong> 3 ячейки навыка при минимальном значении интеллекта (5)</li>
+                                        <li class="list-group-item bg-info text-white"><strong>1 уровень:</strong> 6 ячеек</li>
+                                        <li class="list-group-item bg-info text-white"><strong>2 уровень:</strong> 9 ячеек</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <h5 class="mt-4">Модификаторы в зависимости от пола</h5>
+                    <div class="table-responsive mt-3">
+                        <table class="table table-striped table-bordered">
+                            <thead class="table-dark">
+                            <tr>
+                                <th>Стат</th>
+                                <th>Мужской</th>
+                                <th>Женский</th>
+                                <th>Пояснение</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <td><strong>Сила</strong></td>
+                                <td>7</td>
+                                <td>6</td>
+                                <td>Модификатор умножаем на количество стата = поднять предназначенный для этого вес двумя руками в устойчивом положении</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Телосложение</strong></td>
+                                <td>12</td>
+                                <td>12</td>
+                                <td>Модификатор умножаем на количество стата = количество хитпоинтов</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Выносливость</strong></td>
+                                <td>7</td>
+                                <td>7</td>
+                                <td>Модификатор умножаем на количество стата = пробежать спринтом не выдыхаясь</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Ловкость</strong></td>
+                                <td>1</td>
+                                <td>1</td>
+                                <td>Модификатор не влияет</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Реакция</strong></td>
+                                <td>1</td>
+                                <td>1</td>
+                                <td>Модификатор не влияет</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Восприятие</strong></td>
+                                <td>1.5</td>
+                                <td>1.5</td>
+                                <td>Меньшее влияние штрафов на восприятие, первый штрафной бросок не под 1\2 стата, а под 2\3</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Интеллект</strong></td>
+                                <td>0.4</td>
+                                <td>0.4</td>
+                                <td>0.4 – количество ячеек навыка за 1 очко в стате на уровень (каждое 5 очко приносит 1 доп. Ячейку)</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Мудрость</strong></td>
+                                <td>1</td>
+                                <td>1</td>
+                                <td>Модификатор не влияет</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Воля</strong></td>
+                                <td>1</td>
+                                <td>1</td>
+                                <td>Модификатор не влияет</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Дух</strong></td>
+                                <td>10</td>
+                                <td>10</td>
+                                <td>Модификатор умножаем на количество стата = количество манапоинтов</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Харизма</strong></td>
+                                <td>1</td>
+                                <td>1</td>
+                                <td>Модификатор не влияет</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <h5 class="mt-4">Навыки вне ячеек</h5>
+                    <div class="row mt-3">
+                        <div class="col-md-6">
+                            <div class="card mb-3">
+                                <div class="card-header bg-success text-white">
+                                    <h6 class="mb-0">Взрывная сила</h6>
+                                </div>
+                                <div class="card-body">
+                                    <p class="card-text">За счет строения грудины сжигает разом больший запас кислорода и способен совершить усилие в три раза превосходящее базовое. (Модификатор утраивается, бросок кости д20 делится на 3)</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="card mb-3">
+                                <div class="card-header bg-success text-white">
+                                    <h6 class="mb-0">Орочий нюх</h6>
+                                </div>
+                                <div class="card-body">
+                                    <p class="card-text">Острее человека ощущает запахи. Может ориентироваться по ним.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="card mb-3">
+                                <div class="card-header bg-success text-white">
+                                    <h6 class="mb-0">Орочья чуткость</h6>
+                                </div>
+                                <div class="card-body">
+                                    <p class="card-text">Слух орка работает острее человеческого. В благополучных условиях может засечь сердцебиение противника на расстоянии до 50 метров. Не передаётся полукровкам.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="card mb-3">
+                                <div class="card-header bg-success text-white">
+                                    <h6 class="mb-0">Боевое знамя</h6>
+                                </div>
+                                <div class="card-body">
+                                    <p class="card-text">Сражаясь под знаменем своего клана получает бонус +5 к воли. Только для степных кланов. Не передаётся полукровкам.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Дварфы -->
+    <div class="row mb-4">
+        <div class="col-12">
+            <div class="card race-card">
+                <div class="card-header bg-danger text-white">
+                    <h2 class="h4 mb-0">Дварфы</h2>
+                </div>
+                <div class="card-body">
+                    <p class="card-text">Народ, населяющий западный и южный горные хребты. Ранее населяли и центральный горный хребет, но из-за техномагической катастрофы в районе бывшего вольного города Грагорт эти поселения были покинуты. По слухам существует система туннелей, позволяющих дварфам перемещаться между горными хребтами под землей.</p>
+                    <p class="card-text">Религия дварфов связана со всплесками магической силы, что дважды за сутки ощущается каждым из них. Для представителей старой религии они называют это сердцебиением Духа Земли и веруют в свою избранность этой сущностью, для представителей Империи они говорят, что это благословение Всеблагой Матери, подаренное самой земле.</p>
+
+                    <div class="accordion mt-4" id="dwarfTypes">
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#dwarfType1">
+                                    Наземники
+                                </button>
+                            </h2>
+                            <div id="dwarfType1" class="accordion-collapse collapse show" data-bs-parent="#dwarfTypes">
+                                <div class="accordion-body">
+                                    Дварф, живущий на поверхности земли, выше своих соотечественников, успешно адаптирован к новым реалиям жизни и практически не ощущает биение сердца Духа Земли.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#dwarfType2">
+                                    Привратники
+                                </button>
+                            </h2>
+                            <div id="dwarfType2" class="accordion-collapse collapse" data-bs-parent="#dwarfTypes">
+                                <div class="accordion-body">
+                                    Дварфы, живущие в верхних слоях земли, чаще всего их приглашают для строительства представители других рас, опытные торговцы, алхимики. Дважды в день получают благословение Духа Земли временно увеличивая свои характеристики и получают представление о территории вокруг себя.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#dwarfType3">
+                                    Ремесленники
+                                </button>
+                            </h2>
+                            <div id="dwarfType3" class="accordion-collapse collapse" data-bs-parent="#dwarfTypes">
+                                <div class="accordion-body">
+                                    Дварфы, живущие в средних слоях земли. Лучшие в мануфактурном производстве артефактов, оружия, доспехов и зелий. Из представителей ремесленников выбирается Верховный судья. Дважды в день получают благословение Духа Земли, аккумулируя энергию и усиливая ими чары, зелья и заклинания.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#dwarfType4">
+                                    Глубинники
+                                </button>
+                            </h2>
+                            <div id="dwarfType4" class="accordion-collapse collapse" data-bs-parent="#dwarfTypes">
+                                <div class="accordion-body">
+                                    Дварфы, населяющие самую глубь земли, наиболее приближенные к эманациям Духа Земли, вынужденные наносить защитные татуировки с помощью самых редких руд планеты. Благословение Духа Земли для них является необходимой подпиткой. Крайне редко встречаются на поверхности земли.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row mt-4">
+                        <div class="col-md-6">
+                            <div class="card bg-light">
+                                <div class="card-body">
+                                    <h5 class="card-title">Средние показатели</h5>
+                                    <ul class="list-group list-group-flush">
+                                        <li class="list-group-item bg-light"><strong>Рост наземника:</strong> 145 см</li>
+                                        <li class="list-group-item bg-light"><strong>Рост привратника/ремесленника:</strong> 140 см</li>
+                                        <li class="list-group-item bg-light"><strong>Рост глубинника:</strong> 130 см</li>
+                                        <li class="list-group-item bg-light"><strong>Продолжительность жизни:</strong> 200 лет</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="card bg-info text-white">
+                                <div class="card-body">
+                                    <h5 class="card-title">Ячейки навыков по уровням</h5>
+                                    <ul class="list-group list-group-flush">
+                                        <li class="list-group-item bg-info text-white"><strong>0 уровень:</strong> 4 ячейки навыка при минимальном значении интеллекта (5)</li>
+                                        <li class="list-group-item bg-info text-white"><strong>1 уровень:</strong> 8 ячеек</li>
+                                        <li class="list-group-item bg-info text-white"><strong>2 уровень:</strong> 12 ячеек</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <h5 class="mt-4">Модификаторы в зависимости от пола (Базовые)</h5>
+                    <div class="table-responsive mt-3">
+                        <table class="table table-striped table-bordered">
+                            <thead class="table-dark">
+                            <tr>
+                                <th>Стат</th>
+                                <th>Мужской</th>
+                                <th>Женский</th>
+                                <th>Пояснение</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <td><strong>Сила</strong></td>
+                                <td>6</td>
+                                <td>5</td>
+                                <td>Модификатор умножаем на количество стата = поднять предназначенный для этого вес двумя руками в устойчивом положении</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Телосложение</strong></td>
+                                <td>10</td>
+                                <td>10</td>
+                                <td>Модификатор умножаем на количество стата = количество хитпоинтов</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Выносливость</strong></td>
+                                <td>5</td>
+                                <td>5</td>
+                                <td>Модификатор умножаем на количество стата = пробежать спринтом не выдыхаясь</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Ловкость</strong></td>
+                                <td>1</td>
+                                <td>1</td>
+                                <td>Модификатор не влияет</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Реакция</strong></td>
+                                <td>1</td>
+                                <td>1</td>
+                                <td>Модификатор не влияет</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Восприятие</strong></td>
+                                <td>0.66</td>
+                                <td>0.66</td>
+                                <td>Большее влияние штрафов на восприятие, первый штрафной бросок не под 1\2 стата, а под 1\3</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Интеллект</strong></td>
+                                <td>0.6</td>
+                                <td>0.6</td>
+                                <td>0.6 – количество ячеек навыка за 1 очко в стате на уровень (каждое 5 очко приносит 1 доп. Ячейку)</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Мудрость</strong></td>
+                                <td>1</td>
+                                <td>1</td>
+                                <td>Модификатор не влияет</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Воля</strong></td>
+                                <td>1</td>
+                                <td>1</td>
+                                <td>Модификатор не влияет</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Дух</strong></td>
+                                <td>12</td>
+                                <td>12</td>
+                                <td>Модификатор умножаем на количество стата = количество манапоинтов</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Харизма</strong></td>
+                                <td>1</td>
+                                <td>1</td>
+                                <td>Модификатор не влияет</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="alert alert-warning mt-4">
+                        <h6>Особенности подтипов:</h6>
+                        <ul class="mb-0">
+                            <li><strong>Наземник:</strong> восприятие = 1 (нет штрафов), дух = 10, телосложение = 12</li>
+                            <li><strong>Глубинник:</strong> телосложение = 9</li>
+                        </ul>
+                    </div>
+
+                    <h5 class="mt-4">Навыки вне ячеек по подтипам</h5>
+                    <div class="accordion mt-3" id="dwarfSkills">
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#dwarfSkills1">
+                                    Наземник
+                                </button>
+                            </h2>
+                            <div id="dwarfSkills1" class="accordion-collapse collapse show" data-bs-parent="#dwarfSkills">
+                                <div class="accordion-body">
+                                    <div class="card mb-3">
+                                        <div class="card-header bg-success text-white">
+                                            <h6 class="mb-0">Хорошее питание</h6>
+                                        </div>
+                                        <div class="card-body">
+                                            <p class="card-text">Больше ест, лучше растет, крепче сложен.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#dwarfSkills2">
+                                    Привратник и Ремесленник
+                                </button>
+                            </h2>
+                            <div id="dwarfSkills2" class="accordion-collapse collapse" data-bs-parent="#dwarfSkills">
+                                <div class="accordion-body">
+                                    <div class="card mb-3">
+                                        <div class="card-header bg-success text-white">
+                                            <h6 class="mb-0">Течение магии</h6>
+                                        </div>
+                                        <div class="card-body">
+                                            <p class="card-text">Из-за постоянного взаимодействия с магической энергией лучше усваивает и накапливает манну.</p>
+                                        </div>
+                                    </div>
+                                    <div class="card mb-3">
+                                        <div class="card-header bg-success text-white">
+                                            <h6 class="mb-0">Заучка</h6>
+                                        </div>
+                                        <div class="card-body">
+                                            <p class="card-text">Легче усваивает новые знания.</p>
+                                        </div>
+                                    </div>
+                                    <div class="card mb-3">
+                                        <div class="card-header bg-success text-white">
+                                            <h6 class="mb-0">Жизнь в сумерках</h6>
+                                        </div>
+                                        <div class="card-body">
+                                            <p class="card-text">Лучше видит объекты вблизи, но общая дальность зрения снижена.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#dwarfSkills3">
+                                    Глубинник
+                                </button>
+                            </h2>
+                            <div id="dwarfSkills3" class="accordion-collapse collapse" data-bs-parent="#dwarfSkills">
+                                <div class="accordion-body">
+                                    <div class="card mb-3">
+                                        <div class="card-header bg-warning text-dark">
+                                            <h6 class="mb-0">Аскет</h6>
+                                        </div>
+                                        <div class="card-body">
+                                            <p class="card-text">На глубину попадает мало пищи. Недоедание привело к ухудшению состояния персонажа.</p>
+                                        </div>
+                                    </div>
+                                    <div class="card mb-3">
+                                        <div class="card-header bg-success text-white">
+                                            <h6 class="mb-0">Течение магии</h6>
+                                        </div>
+                                        <div class="card-body">
+                                            <p class="card-text">Из-за постоянного взаимодействия с магической энергией лучше усваивает и накапливает манну.</p>
+                                        </div>
+                                    </div>
+                                    <div class="card mb-3">
+                                        <div class="card-header bg-success text-white">
+                                            <h6 class="mb-0">Заучка</h6>
+                                        </div>
+                                        <div class="card-body">
+                                            <p class="card-text">Легче усваивает новые знания.</p>
+                                        </div>
+                                    </div>
+                                    <div class="card mb-3">
+                                        <div class="card-header bg-success text-white">
+                                            <h6 class="mb-0">Жизнь в сумерках</h6>
+                                        </div>
+                                        <div class="card-body">
+                                            <p class="card-text">Лучше видит объекты вблизи, но общая дальность зрения снижена.</p>
+                                        </div>
+                                    </div>
+                                    <div class="card mb-3">
+                                        <div class="card-header bg-success text-white">
+                                            <h6 class="mb-0">Аугментат</h6>
+                                        </div>
+                                        <div class="card-body">
+                                            <p class="card-text">Благополучно пережил внедрение инородных материалов в кожу, освоился с ними и способен использовать их свойства.</p>
+                                            <ul class="mb-0">
+                                                <li><strong>Лириум:</strong> увеличивает модификатор духа до 15</li>
+                                                <li><strong>Двеомерит:</strong> персонаж не может использовать магию во вне себя, но и не ощущается магическими средствами снаружи</li>
+                                                <li><strong>Отатарал:</strong> поглощает манну из внешнего мира, заклинания с недостаточным уровнем манны разбиваются о персонажа</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Хоббиты -->
+    <div class="row mb-4">
+        <div class="col-12">
+            <div class="card race-card">
+                <div class="card-header bg-primary text-white">
+                    <h2 class="h4 mb-0">Хоббит</h2>
+                </div>
+                <div class="card-body">
+                    <p class="card-text">Воинственные полурослики, мастера маскировки и засад заселившие южные берега внутреннего моря и известные восточные земли южной части материка. Подвижны, хитры и опасны. В своё время заключили пакт вассалитета с Халифатом и этим обеспечили безопасность своих северных границ.</p>
+                    <p class="card-text">Предпочитают заниматься сельским хозяйством, но при этом каждый город и каждая деревня обязаны содержать отряд наёмников, которые при необходимости превращаются в оборонительную армию. Для наработки воинского мастерства отряды полуросликов участвуют в военных конфликтах на стороне вольных городов и Халифата. Хоть их торговцы и достигают северные провинции Империи, ни один из боевых отрядов так и не продал клинки людям Императора.</p>
+
+                    <div class="row mt-4">
+                        <div class="col-md-6">
+                            <div class="card bg-light">
+                                <div class="card-body">
+                                    <h5 class="card-title">Средние показатели</h5>
+                                    <ul class="list-group list-group-flush">
+                                        <li class="list-group-item bg-light"><strong>Рост:</strong> 110 см</li>
+                                        <li class="list-group-item bg-light"><strong>Продолжительность жизни:</strong> 150 лет</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <h5 class="mt-4">Модификаторы в зависимости от пола</h5>
+                    <div class="table-responsive mt-3">
+                        <table class="table table-striped table-bordered">
+                            <thead class="table-dark">
+                            <tr>
+                                <th>Стат</th>
+                                <th>Мужской</th>
+                                <th>Женский</th>
+                                <th>Пояснение</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <td><strong>Сила</strong></td>
+                                <td>4</td>
+                                <td>4</td>
+                                <td>Модификатор умножаем на количество стата = поднять предназначенный для этого вес двумя руками в устойчивом положении</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Телосложение</strong></td>
+                                <td>7</td>
+                                <td>7</td>
+                                <td>Модификатор умножаем на количество стата = количество хитпоинтов</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Выносливость</strong></td>
+                                <td>5</td>
+                                <td>5</td>
+                                <td>Модификатор умножаем на количество стата = пробежать спринтом не выдыхаясь</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Ловкость</strong></td>
+                                <td>1.5</td>
+                                <td>1.5</td>
+                                <td>Меньшее влияние штрафов на ловкость, первый штрафной бросок не под 1\2 стата, а под 2\3</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Реакция</strong></td>
+                                <td>1.5</td>
+                                <td>1.5</td>
+                                <td>Меньшее влияние штрафов на реакцию, первый штрафной бросок не под 1\2 стата, а под 2\3</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Восприятие</strong></td>
+                                <td>1</td>
+                                <td>1</td>
+                                <td>Модификатор не влияет</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Интеллект</strong></td>
+                                <td>0.4</td>
+                                <td>0.4</td>
+                                <td>0.4 – количество ячеек навыка за 1 очко в стате на уровень (каждое 5 очко приносит 1 доп. Ячейку)</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Мудрость</strong></td>
+                                <td>1</td>
+                                <td>1</td>
+                                <td>Модификатор не влияет</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Воля</strong></td>
+                                <td>1</td>
+                                <td>1</td>
+                                <td>Модификатор не влияет</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Дух</strong></td>
+                                <td>10</td>
+                                <td>10</td>
+                                <td>Модификатор умножаем на количество стата = количество манапоинтов</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Харизма</strong></td>
+                                <td>1.5</td>
+                                <td>1.5</td>
+                                <td>Меньшее влияние штрафов на харизму, первый штрафной бросок не под 1\2 стата, а под 2\3</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="row mt-4">
+                        <div class="col-md-6">
+                            <div class="card bg-info text-white">
+                                <div class="card-body">
+                                    <h5 class="card-title">Ячейки навыков по уровням</h5>
+                                    <ul class="list-group list-group-flush">
+                                        <li class="list-group-item bg-info text-white"><strong>0 уровень:</strong> 3 ячейки навыка при минимальном значении интеллекта (5)</li>
+                                        <li class="list-group-item bg-info text-white"><strong>1 уровень:</strong> 6 ячеек</li>
+                                        <li class="list-group-item bg-info text-white"><strong>2 уровень:</strong> 9 ячеек</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <h5 class="mt-4">Навыки вне ячеек</h5>
+                    <div class="row mt-3">
+                        <div class="col-md-6">
+                            <div class="card mb-3">
+                                <div class="card-header bg-success text-white">
+                                    <h6 class="mb-0">Верткость</h6>
+                                </div>
+                                <div class="card-body">
+                                    <p class="card-text">С большим шансом успевает парировать удар или погасить импульс вражеского удара вращением себя.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="card mb-3">
+                                <div class="card-header bg-success text-white">
+                                    <h6 class="mb-0">Лёгкий шаг</h6>
+                                </div>
+                                <div class="card-body">
+                                    <p class="card-text">Поступь персонажа практически не слышна.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="card mb-3">
+                                <div class="card-header bg-success text-white">
+                                    <h6 class="mb-0">Неприметность</h6>
+                                </div>
+                                <div class="card-body">
+                                    <p class="card-text">Легче маскироваться при наличии соответствующего навыка. Требуется больше восприятия для обнаружения персонажа.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="card mb-3">
+                                <div class="card-header bg-success text-white">
+                                    <h6 class="mb-0">Смазливая мордашка</h6>
+                                </div>
+                                <div class="card-body">
+                                    <p class="card-text">Легче вызвать симпатию или жалость при общении с окружающими.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
