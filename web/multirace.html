@@ -1,0 +1,822 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Создание персонажа</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<!-- Навигация -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container">
+        <a class="navbar-brand" href="index.html">RPG Мир</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="index.html">Главная</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="races.html">Расы</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="classes.html">Классы</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="religions.html">Религии</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="applications.html">Анкеты</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="mechanics.html">Механики</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="abilities.html">Способности</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="sheet.html">Лист игрока</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" href="multirace.html">Генератор мультирас</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<!-- Основной контент -->
+<div class="container my-4">
+    <div class="row">
+        <div class="col-12">
+            <div class="jumbotron bg-primary text-white p-4 mb-4 border-radius-lg">
+                <h1 class="display-4">Создание персонажа</h1>
+                <p class="lead">Выберите расы и пол для создания гибридного персонажа</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Выбор пола персонажа -->
+    <div class="row mb-4">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header">
+                    <h5 class="card-title mb-0">Пол персонажа</h5>
+                </div>
+                <div class="card-body">
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="characterGender" id="characterMale" value="male" checked>
+                        <label class="form-check-label" for="characterMale">Мужской</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="characterGender" id="characterFemale" value="female">
+                        <label class="form-check-label" for="characterFemale">Женский</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Форма выбора рас -->
+    <div class="row mb-4">
+        <div class="col-md-6">
+            <div class="card race-card">
+                <div class="card-header">
+                    <h5 class="card-title mb-0">Первая раса</h5>
+                </div>
+                <div class="card-body">
+                    <div class="mb-3">
+                        <label for="race1" class="form-label">Раса:</label>
+                        <select class="form-select" id="race1">
+                            <option value="human">Человек</option>
+                            <option value="elf">Эльф</option>
+                            <option value="orc">Орк</option>
+                            <option value="dwarf">Дварф</option>
+                            <option value="hobbit">Хоббит</option>
+                            <option value="goblin">Гоблин</option>
+                            <option value="ogre">Огр</option>
+                            <option value="troll">Тролль</option>
+                            <option value="demon">Демон</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="card race-card">
+                <div class="card-header">
+                    <h5 class="card-title mb-0">Вторая раса</h5>
+                </div>
+                <div class="card-body">
+                    <div class="mb-3">
+                        <label for="race2" class="form-label">Раса:</label>
+                        <select class="form-select" id="race2">
+                            <option value="human">Человек</option>
+                            <option value="elf">Эльф</option>
+                            <option value="orc">Орк</option>
+                            <option value="dwarf">Дварф</option>
+                            <option value="hobbit">Хоббит</option>
+                            <option value="goblin">Гоблин</option>
+                            <option value="ogre">Огр</option>
+                            <option value="troll">Тролль</option>
+                            <option value="demon">Демон</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Кнопка генерации -->
+    <div class="row mb-4">
+        <div class="col-12 text-center">
+            <button id="generateBtn" class="btn btn-primary btn-lg">Сгенерировать характеристики</button>
+        </div>
+    </div>
+    <div class="row mb-4">
+        <div class="col-12 text-center">
+            <button id="generateBtnAbilities" class="btn btn-primary btn-lg">Сгенерировать способности</button>
+        </div>
+    </div>
+
+
+    <!-- Таблица расовых способностей -->
+    <div class="row mb-4">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header">
+                    <h5 class="card-title mb-0">Расовые способности</h5>
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table table-striped table-hover">
+                            <thead>
+                            <tr>
+                                <th>Способность</th>
+                                <th>Описание</th>
+                                <th>Раса</th>
+                                <th>Бросить кубик?</th>
+                            </tr>
+                            </thead>
+                            <tbody id="raceAbilitiesTable">
+                            <!-- Здесь будут генерироваться расовые способности -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Результирующая таблица способностей -->
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header">
+                    <h5 class="card-title mb-0">Результирующие способности</h5>
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table table-striped table-hover">
+                            <thead>
+                            <tr>
+                                <th>Способность</th>
+                                <th>Описание</th>
+                                <th>Примечание</th>
+                            </tr>
+                            </thead>
+                            <tbody id="resultAbilitiesTable">
+                            <!-- Здесь будут генерироваться результирующие способности -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Таблица характеристик рас -->
+    <div class="row mb-4">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header">
+                    <h5 class="card-title mb-0">Характеристики рас</h5>
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table table-striped table-hover">
+                            <thead>
+                            <tr>
+                                <th>Характеристика</th>
+                                <th id="race1Header">Раса 1</th>
+                                <th id="race2Header">Раса 2</th>
+                                <th>Бросить кубик?</th>
+                            </tr>
+                            </thead>
+                            <tbody id="raceStatsTable">
+                            <!-- Здесь будут генерироваться строки с характеристиками -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Результирующая таблица характеристик -->
+    <div class="row mb-4">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header">
+                    <h5 class="card-title mb-0">Результирующие характеристики</h5>
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table table-striped table-hover">
+                            <thead>
+                            <tr>
+                                <th>Характеристика</th>
+                                <th>Значение</th>
+                                <th>Примечание</th>
+                            </tr>
+                            </thead>
+                            <tbody id="resultStatsTable">
+                            <!-- Здесь будут генерироваться результирующие характеристики -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Футер -->
+<footer class="bg-dark text-white py-3 mt-4">
+    <div class="container text-center">
+        <p class="mb-0">Генератор персонажа &copy; 2023</p>
+    </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+    // Данные о характеристиках рас
+    const raceStats = {
+        human: {
+            male: { strength: 6, constitution: 10, endurance: 5, dexterity: 1, reaction: 1, perception: 1, intelligence: 1.6, wisdom: 1, will: 1, spirit: 10, charisma: 1 },
+            female: { strength: 5, constitution: 10, endurance: 5, dexterity: 1, reaction: 1, perception: 1, intelligence: 1.6, wisdom: 1, will: 1, spirit: 10, charisma: 1 }
+        },
+        elf: {
+            male: { strength: 5, constitution: 9, endurance: 7, dexterity: 1.5, reaction: 1, perception: 1, intelligence: 0.4, wisdom: 1.5, will: 1, spirit: 10, charisma: 1 },
+            female: { strength: 4, constitution: 9, endurance: 7, dexterity: 1.5, reaction: 1, perception: 1, intelligence: 0.4, wisdom: 1.5, will: 1, spirit: 10, charisma: 1 }
+        },
+        orc: {
+            male: { strength: 7, constitution: 12, endurance: 7, dexterity: 1, reaction: 1, perception: 1.5, intelligence: 0.4, wisdom: 1, will: 1, spirit: 10, charisma: 1 },
+            female: { strength: 6, constitution: 12, endurance: 7, dexterity: 1, reaction: 1, perception: 1.5, intelligence: 0.4, wisdom: 1, will: 1, spirit: 10, charisma: 1 }
+        },
+        dwarf: {
+            male: { strength: 6, constitution: 10, endurance: 5, dexterity: 1, reaction: 1, perception: 0.66, intelligence: 0.6, wisdom: 1, will: 1, spirit: 12, charisma: 1 },
+            female: { strength: 5, constitution: 10, endurance: 5, dexterity: 1, reaction: 1, perception: 0.66, intelligence: 0.6, wisdom: 1, will: 1, spirit: 12, charisma: 1 }
+        },
+        hobbit: {
+            male: { strength: 4, constitution: 7, endurance: 5, dexterity: 1.5, reaction: 1.5, perception: 1, intelligence: 0.4, wisdom: 1, will: 1, spirit: 10, charisma: 1.5 },
+            female: { strength: 4, constitution: 7, endurance: 5, dexterity: 1.5, reaction: 1.5, perception: 1, intelligence: 0.4, wisdom: 1, will: 1, spirit: 10, charisma: 1.5 }
+        },
+        goblin: {
+            male: { strength: 3, constitution: 7, endurance: 10, dexterity: 1.5, reaction: 1.5, perception: 1, intelligence: 0.6, wisdom: 1, will: 1, spirit: 10, charisma: 1 },
+            female: { strength: 3, constitution: 7, endurance: 10, dexterity: 1.5, reaction: 1.5, perception: 1, intelligence: 0.6, wisdom: 1, will: 1, spirit: 10, charisma: 1 }
+        },
+        ogre: {
+            male: { strength: 10, constitution: 15, endurance: 7, dexterity: 1, reaction: 1, perception: 1, intelligence: 0.4, wisdom: 1, will: 1, spirit: 10, charisma: 1 },
+            female: { strength: 8, constitution: 15, endurance: 7, dexterity: 1, reaction: 1, perception: 1, intelligence: 0.4, wisdom: 1, will: 1, spirit: 10, charisma: 1 }
+        },
+        troll: {
+            male: { strength: 12, constitution: 20, endurance: 5, dexterity: 1, reaction: 1, perception: 1, intelligence: 0.4, wisdom: 1, will: 1, spirit: 15, charisma: 1 },
+            female: { strength: 10, constitution: 20, endurance: 5, dexterity: 1, reaction: 1, perception: 1, intelligence: 0.4, wisdom: 1, will: 1, spirit: 15, charisma: 1 }
+        },
+        demon: {
+            male: { strength: 3, constitution: 8, endurance: 7, dexterity: 1.5, reaction: 1.5, perception: 1, intelligence: 0.4, wisdom: 1, will: 1, spirit: 10, charisma: 1.5 },
+            female: { strength: 3, constitution: 8, endurance: 7, dexterity: 1.5, reaction: 1.5, perception: 1, intelligence: 0.4, wisdom: 1, will: 1, spirit: 10, charisma: 1.5 }
+        }
+    };
+
+    // Данные о расовых способностях
+    const raceAbilities = {
+        human: [
+            {
+                name: "Дополнительный интеллект",
+                description: "Дополнительный интеллект + слот под навыки"
+            }
+        ],
+        elf: [
+            {
+                name: "Детектор движения",
+                description: "Глаза эльфов устроены так, что бы улавливать движущиеся объекты в условиях пониженной видимости"
+            },
+            {
+                name: "Акробатика",
+                description: "Из-за постоянной необходимости пробираться по сложной местности развивается навык акробатики"
+            }
+        ],
+        orc: [
+            {
+                name: "Взрывная сила",
+                description: "За счет строения грудины сжигает разом больший запас кислорода и способен совершить усилие в три раза превосходящее базовое. (Модификатор утраивается, бросок кости д20 делится на 3)"
+            },
+            {
+                name: "Орочий нюх",
+                description: "Острее человека ощущает запахи. Может ориентироваться по ним"
+            },
+            {
+                name: "Орочья чуткость",
+                description: "Слух орка работает острее человеческого. В благополучных условиях может засечь сердцебиение противника на расстоянии до 50 метров. Не передаётся полукровкам"
+            }
+        ],
+        dwarf: [
+            {
+                name: "Наземник: Хорошее питание",
+                description: "Больше ест, лучше растет, крепче сложен"
+            },
+            {
+                name: "Привратник: Течение магии",
+                description: "Из-за постоянного взаимодействия с магической энергией лучше усваивает и накапливает манну"
+            },
+            {
+                name: "Привратник: Заучка",
+                description: "Легче усваивает новые знания"
+            },
+            {
+                name: "Привратник: Жизнь в сумерках",
+                description: "Лучше видит объекты вблизи, но общая дальность зрения снижена"
+            },
+            {
+                name: "Глубинник: Аскет",
+                description: "На глубину попадает мало пищи. Недоедание привело к ухудшению состояния персонажа"
+            },
+            {
+                name: "Глубинник: Течение магии",
+                description: "Из-за постоянного взаимодействия с магической энергией лучше усваивает и накапливает манну"
+            },
+            {
+                name: "Глубинник: Заучка",
+                description: "Легче усваивает новые знания"
+            },
+            {
+                name: "Глубинник: Жизнь в сумерках",
+                description: "Лучше видит объекты вблизи, но общая дальность зрения снижена"
+            },
+            {
+                name: "Глубинник: Аугментат",
+                description: "Благополучно пережил внедрение инородных материалов в кожу, освоился с ними и способен использовать их свойства"
+            }
+        ],
+        hobbit: [
+            {
+                name: "Верткость",
+                description: "С большим шансом успевает парировать удар или погасить импульс вражеского удара вращением себя"
+            },
+            {
+                name: "Лёгкий шаг",
+                description: "Поступь персонажа практически не слышна"
+            },
+            {
+                name: "Неприметность",
+                description: "Легче маскироваться при наличии соответствующего навыка. Требуется больше восприятия для обнаружения персонажа"
+            },
+            {
+                name: "Смазливая мордашка",
+                description: "Легче вызвать симпатию или жалость при общении с окружающими"
+            }
+        ],
+        goblin: [
+            {
+                name: "Верткость",
+                description: "С большим шансом успевает парировать удар или погасить импульс вражеского удара вращением себя"
+            },
+            {
+                name: "Бритвенные когти",
+                description: "Ногтевые пластины гоблинов заканчиваются треугольными когтями очень острыми на конце. Гоблины превосходно используют своё природное оружие. Боевой навык «слепящий разрез», доп. урон в рукопашной схватке кровотечением 1d12"
+            },
+            {
+                name: "Особо твердый лоб",
+                description: "Особенность эволюции гоблинов – твердейшая лобовая кость. И умение ее использовать воспитанное подростковыми и детскими драками. Боевой навык «таранный удар лбом»"
+            }
+        ],
+        troll: [
+            {
+                name: "Дикая мощь",
+                description: "Огромные и мускулистые имеют повышенный коэффициент силы"
+            },
+            {
+                name: "Толстая шкура",
+                description: "Природный защитный механизм троллей, защищающий от воздействия внешней среды и механических повреждений. Тролль способен выдержать куда более мощные удары и страшные ранения"
+            },
+            {
+                name: "Усваивание внешней энергии",
+                description: "Тролли куда более чувствительны к магическим проявлениям мира и поэтому лучше аккумулируют в себе запас манны и способны работать с большим ее объёмом"
+            },
+            {
+                name: "Боевые когти",
+                description: "Ногтевые пластины троллей заканчиваются треугольными когтями очень острыми и прочными на конце. Тролли превосходно используют своё природное оружие. Боевой навык «Прокол когтем», доп. урон в рукопашной схватке кровотечением 1d12*количество вошедших в тело врага когтей"
+            },
+            {
+                name: "Пожирание врага",
+                description: "Тролль посреди боя подхватывает своего противника и откусывает от него часть демотивируя и пугая своих врагов. D20 сила+харизма/2 против d20 воли противника"
+            }
+        ],
+        ogre: [
+            {
+                name: "Дикая мощь",
+                description: "Огромные и мускулистые имеют повышенный коэффициент силы"
+            },
+            {
+                name: "Могучее сложение",
+                description: "Природный защитный механизм, защищающий от воздействия внешней среды и механических повреждений. Огр способен выдержать куда более мощные удары и страшные ранения"
+            }
+        ],
+        demon: [
+            {
+                name: "Верткость",
+                description: "С большим шансом успевает парировать удар или погасить импульс вражеского удара вращением себя"
+            },
+            {
+                name: "Отрицательная харизма",
+                description: "Пусть он противен и Вам известно, что он отвратителен в своих делишках, но каждый раз ему почему-то удается Вас облапошить"
+            }
+        ]
+    };
+
+    // Группы рас для ограничений
+    const raceGroups = {
+        civilized: ['human', 'elf', 'orc', 'dwarf', 'hobbit'],
+        monstrous: ['goblin', 'troll', 'ogre', 'demon']
+    };
+
+    // Объекты для хранения состояния чекбоксов
+    let checkboxStates = {};
+    let abilityCheckboxStates = {};
+
+    // Функция для получения названия расы на русском
+    function getRaceName(race) {
+        const raceNames = {
+            human: 'Человек',
+            elf: 'Эльф',
+            orc: 'Орк',
+            dwarf: 'Дварф',
+            hobbit: 'Хоббит',
+            goblin: 'Гоблин',
+            ogre: 'Огр',
+            troll: 'Тролль',
+            demon: 'Демон'
+        };
+        return raceNames[race] || race;
+    }
+
+    // Функция для получения названия характеристики на русском
+    function getStatName(stat) {
+        const statNames = {
+            strength: 'Сила',
+            constitution: 'Телосложение',
+            endurance: 'Выносливость',
+            dexterity: 'Ловкость',
+            reaction: 'Реакция',
+            perception: 'Восприятие',
+            intelligence: 'Интеллект',
+            wisdom: 'Мудрость',
+            will: 'Воля',
+            spirit: 'Дух',
+            charisma: 'Харизма'
+        };
+        return statNames[stat] || stat;
+    }
+
+    // Функция для определения группы расы
+    function getRaceGroup(race) {
+        if (raceGroups.civilized.includes(race)) return 'civilized';
+        if (raceGroups.monstrous.includes(race)) return 'monstrous';
+        return null;
+    }
+
+    // Функция для обновления доступных рас во втором селекте
+    function updateRace2Options() {
+        const race1 = document.getElementById('race1').value;
+        const race2Select = document.getElementById('race2');
+        const currentRace2 = race2Select.value;
+
+        const raceGroup = getRaceGroup(race1);
+        const availableRaces = raceGroup ? raceGroups[raceGroup] : Object.keys(raceStats);
+
+        // Сохраняем текущее значение, если оно доступно
+        let newValue = availableRaces.includes(currentRace2) ? currentRace2 : availableRaces[0];
+
+        // Обновляем опции
+        race2Select.innerHTML = '';
+        availableRaces.forEach(race => {
+            const option = document.createElement('option');
+            option.value = race;
+            option.textContent = getRaceName(race);
+            race2Select.appendChild(option);
+        });
+
+        // Восстанавливаем значение
+        race2Select.value = newValue;
+    }
+
+    // Функция для генерации таблицы характеристик
+    function generateRaceStatsTable() {
+        const race1 = document.getElementById('race1').value;
+        const race2 = document.getElementById('race2').value;
+        const characterGender = document.querySelector('input[name="characterGender"]:checked').value;
+
+        // Обновляем заголовки таблицы
+        document.getElementById('race1Header').textContent = getRaceName(race1);
+        document.getElementById('race2Header').textContent = getRaceName(race2);
+
+        // Получаем характеристики для выбранных рас и пола
+        const stats1 = raceStats[race1][characterGender];
+        const stats2 = raceStats[race2][characterGender];
+
+        // Генерируем строки таблицы
+        const tableBody = document.getElementById('raceStatsTable');
+        tableBody.innerHTML = '';
+
+        for (const stat in stats1) {
+            const row = document.createElement('tr');
+
+            // Название характеристики
+            const statCell = document.createElement('td');
+            statCell.textContent = getStatName(stat);
+            row.appendChild(statCell);
+
+            // Значение для первой расы
+            const value1Cell = document.createElement('td');
+            value1Cell.textContent = stats1[stat];
+            row.appendChild(value1Cell);
+
+            // Значение для второй расы
+            const value2Cell = document.createElement('td');
+            value2Cell.textContent = stats2[stat];
+            row.appendChild(value2Cell);
+
+            // Чекбокс для броска кубика
+            const checkboxCell = document.createElement('td');
+            const checkbox = document.createElement('input');
+            checkbox.type = 'checkbox';
+            checkbox.className = 'form-check-input dice-checkbox';
+
+            // Восстанавливаем состояние чекбокса или устанавливаем по умолчанию true
+            checkbox.checked = checkboxStates[stat] !== undefined ? checkboxStates[stat] : true;
+            checkbox.dataset.stat = stat;
+
+            // Сохраняем состояние при изменении
+            checkbox.addEventListener('change', function() {
+                checkboxStates[stat] = this.checked;
+            });
+
+            checkboxCell.appendChild(checkbox);
+            row.appendChild(checkboxCell);
+
+            tableBody.appendChild(row);
+        }
+    }
+
+    // Функция для генерации таблицы расовых способностей
+    function generateRaceAbilitiesTable() {
+        const race1 = document.getElementById('race1').value;
+        const race2 = document.getElementById('race2').value;
+
+        const abilities1 = raceAbilities[race1] || [];
+        const abilities2 = raceAbilities[race2] || [];
+
+        // Объединяем способности обеих рас
+        const allAbilities = [
+            ...abilities1.map(ability => ({ ...ability, race: race1 })),
+            ...abilities2.map(ability => ({ ...ability, race: race2 }))
+        ];
+
+        // Генерируем строки таблицы
+        const tableBody = document.getElementById('raceAbilitiesTable');
+        tableBody.innerHTML = '';
+
+        allAbilities.forEach((ability, index) => {
+            const row = document.createElement('tr');
+            const abilityKey = `${ability.race}_${ability.name}`;
+
+            // Название способности
+            const nameCell = document.createElement('td');
+            nameCell.textContent = ability.name;
+            row.appendChild(nameCell);
+
+            // Описание способности
+            const descCell = document.createElement('td');
+            descCell.textContent = ability.description;
+            row.appendChild(descCell);
+
+            // Раса
+            const raceCell = document.createElement('td');
+            raceCell.textContent = getRaceName(ability.race);
+            row.appendChild(raceCell);
+
+            // Чекбокс для броска кубика
+            const checkboxCell = document.createElement('td');
+            const checkbox = document.createElement('input');
+            checkbox.type = 'checkbox';
+            checkbox.className = 'form-check-input ability-dice-checkbox';
+
+            // Восстанавливаем состояние чекбокса или устанавливаем по умолчанию true
+            checkbox.checked = abilityCheckboxStates[abilityKey] !== undefined ? abilityCheckboxStates[abilityKey] : true;
+            checkbox.dataset.ability = abilityKey;
+
+            // Сохраняем состояние при изменении
+            checkbox.addEventListener('change', function() {
+                abilityCheckboxStates[abilityKey] = this.checked;
+            });
+
+            checkboxCell.appendChild(checkbox);
+            row.appendChild(checkboxCell);
+
+            tableBody.appendChild(row);
+        });
+    }
+
+    // Функция для броска кубика d6
+    function rollD6() {
+        return Math.floor(Math.random() * 6) + 1;
+    }
+
+    // Функция для генерации результирующей таблицы характеристик
+    function generateResultTable() {
+        const race1 = document.getElementById('race1').value;
+        const race2 = document.getElementById('race2').value;
+        const characterGender = document.querySelector('input[name="characterGender"]:checked').value;
+
+        // Получаем характеристики для выбранных рас и пола
+        const stats1 = raceStats[race1][characterGender];
+        const stats2 = raceStats[race2][characterGender];
+
+        // Генерируем результирующую таблицу
+        const resultTableBody = document.getElementById('resultStatsTable');
+        resultTableBody.innerHTML = '';
+
+        for (const stat in stats1) {
+            const row = document.createElement('tr');
+
+            // Название характеристики
+            const statCell = document.createElement('td');
+            statCell.textContent = getStatName(stat);
+            row.appendChild(statCell);
+
+            // Результирующее значение
+            const valueCell = document.createElement('td');
+
+            // Примечание
+            const noteCell = document.createElement('td');
+
+            // Получаем состояние чекбокса для этой характеристики
+            const useDice = checkboxStates[stat] !== undefined ? checkboxStates[stat] : true;
+
+            let resultValue;
+            let note;
+
+            if (useDice) {
+                // Бросаем кубик только если чекбокс отмечен
+                const diceRoll = rollD6();
+
+                if (diceRoll <= 3) {
+                    // Берем максимальное значение
+                    resultValue = Math.max(stats1[stat], stats2[stat]);
+                    note = `Кубик: ${diceRoll} - выбрано максимальное значение`;
+                } else {
+                    // Берем минимальное значение
+                    resultValue = Math.min(stats1[stat], stats2[stat]);
+                    note = `Кубик: ${diceRoll} - выбрано минимальное значение`;
+                }
+            } else {
+                // Берем максимальное значение без броска кубика
+                resultValue = Math.max(stats1[stat], stats2[stat]);
+                note = 'Выбрано максимальное значение (без броска кубика)';
+            }
+
+            valueCell.textContent = resultValue;
+            noteCell.textContent = note;
+
+            row.appendChild(valueCell);
+            row.appendChild(noteCell);
+            resultTableBody.appendChild(row);
+        }
+    }
+
+    // Функция для генерации результирующей таблицы способностей
+    function generateResultAbilitiesTable() {
+        const race1 = document.getElementById('race1').value;
+        const race2 = document.getElementById('race2').value;
+
+        const abilities1 = raceAbilities[race1] || [];
+        const abilities2 = raceAbilities[race2] || [];
+
+        // Объединяем способности обеих рас
+        const allAbilities = [
+            ...abilities1.map(ability => ({ ...ability, race: race1 })),
+            ...abilities2.map(ability => ({ ...ability, race: race2 }))
+        ];
+
+        // Генерируем результирующую таблицу
+        const resultTableBody = document.getElementById('resultAbilitiesTable');
+        resultTableBody.innerHTML = '';
+
+        allAbilities.forEach(ability => {
+            const abilityKey = `${ability.race}_${ability.name}`;
+
+            // Получаем состояние чекбокса для этой способности
+            const useDice = abilityCheckboxStates[abilityKey] !== undefined ? abilityCheckboxStates[abilityKey] : true;
+
+            let note;
+            let includeAbility = true;
+
+            if (useDice) {
+                // Бросаем кубик только если чекбокс отмечен
+                const diceRoll = rollD6();
+
+                if (diceRoll <= 3) {
+                    // Способность сохраняется
+                    note = `Кубик: ${diceRoll} - способность сохранена`;
+                } else {
+                    // Способность теряется
+                    note = `Кубик: ${diceRoll} - способность утрачена`;
+                    includeAbility = false;
+                }
+            } else {
+                // Способность всегда сохраняется
+                note = 'Способность сохранена (без броска кубика)';
+            }
+
+            if (includeAbility) {
+                const row = document.createElement('tr');
+
+                // Название способности
+                const nameCell = document.createElement('td');
+                nameCell.textContent = ability.name;
+                row.appendChild(nameCell);
+
+                // Описание способности
+                const descCell = document.createElement('td');
+                descCell.textContent = ability.description;
+                row.appendChild(descCell);
+
+                // Примечание
+                const noteCell = document.createElement('td');
+                noteCell.textContent = note;
+                row.appendChild(noteCell);
+
+                resultTableBody.appendChild(row);
+            }
+        });
+    }
+
+    // Обработчик события для кнопки генерации характеристик
+    document.getElementById('generateBtn').addEventListener('click', function() {
+        generateResultTable();
+    });
+    // Обработчик события для кнопки генерации способностей
+    document.getElementById('generateBtnAbilities').addEventListener('click', function() {
+        generateResultAbilitiesTable();
+    });
+
+    // Обработчики для автоматического обновления при изменении выбора
+    document.getElementById('race1').addEventListener('change', function() {
+        updateRace2Options();
+        generateRaceStatsTable();
+        generateRaceAbilitiesTable();
+        generateResultTable();
+        generateResultAbilitiesTable();
+    });
+
+    document.getElementById('race2').addEventListener('change', function() {
+        generateRaceStatsTable();
+        generateRaceAbilitiesTable();
+        generateResultTable();
+        generateResultAbilitiesTable();
+    });
+
+    document.querySelectorAll('input[name="characterGender"]').forEach(radio => {
+        radio.addEventListener('change', function() {
+            generateRaceStatsTable();
+            generateResultTable();
+        });
+    });
+
+    // Инициализация при загрузке страницы
+    document.addEventListener('DOMContentLoaded', function() {
+        updateRace2Options();
+        generateRaceStatsTable();
+        generateRaceAbilitiesTable();
+        generateResultTable();
+        generateResultAbilitiesTable();
+    });
+</script>
+</body>
+</html>
