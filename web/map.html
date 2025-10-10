@@ -1,0 +1,808 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Интерактивная карта</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        .map-container {
+            position: relative;
+            width: 100%;
+            height: 80vh;
+            border: 2px solid #007bff;
+            border-radius: 8px;
+            overflow: hidden;
+            background: #f8f9fa;
+        }
+
+        #svgContainer {
+            width: 100%;
+            height: 100%;
+            cursor: grab;
+            transform-origin: 0 0;
+            transition: transform 0.1s ease;
+        }
+
+        #svgContainer:active {
+            cursor: grabbing;
+        }
+
+        .map-controls {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            z-index: 1000;
+        }
+
+        .marker {
+            position: absolute;
+            cursor: pointer;
+            transform: translate(-50%, -50%);
+            z-index: 100;
+            transition: all 0.2s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+        }
+
+        .marker:hover {
+            transform: translate(-50%, -50%) scale(1.2);
+            z-index: 101;
+        }
+
+        .marker:hover::after {
+            content: attr(data-title);
+            position: absolute;
+            top: -40px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(0,0,0,0.8);
+            color: white;
+            padding: 6px 12px;
+            border-radius: 6px;
+            font-size: 12px;
+            white-space: nowrap;
+            z-index: 1000;
+        }
+
+        .drawing-path {
+            position: absolute;
+            top: 0;
+            left: 0;
+            pointer-events: none;
+            z-index: 50;
+        }
+
+        .tool-btn {
+            width: 40px;
+            height: 40px;
+            margin-bottom: 5px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+        }
+
+        .zoom-display {
+            position: absolute;
+            bottom: 10px;
+            left: 10px;
+            background: rgba(0,0,0,0.7);
+            color: white;
+            padding: 5px 10px;
+            border-radius: 4px;
+            font-size: 14px;
+            z-index: 1000;
+        }
+
+        .active-tool {
+            background-color: #007bff !important;
+            color: white !important;
+        }
+
+        /* Стили для SVG элементов */
+        .svg-country:hover {
+            stroke: #007bff;
+            stroke-width: 2;
+            cursor: pointer;
+        }
+
+        .svg-city {
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .svg-city:hover {
+            fill: #007bff !important;
+            transform: scale(1.2);
+        }
+
+        .icon-preview {
+            font-size: 24px;
+            margin-right: 10px;
+        }
+
+        .marker-size-control {
+            width: 100%;
+        }
+
+        .icon-emoji {
+            font-size: 20px;
+            display: block;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container">
+        <a class="navbar-brand" href="index.html">RPG Мир</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="index.html">Главная</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="races.html">Расы</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="classes.html">Классы</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link " href="religions.html">Религии</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="applications.html">Анкеты</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="mechanics.html">Механики</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="abilities.html">Способности</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="sheet.html">Лист игрока</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="multirace.html">Генератор полукровок</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="diceroller.html">Dice roller</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" href="map.html">Интерактивная карта</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<!-- Основной контент -->
+<div class="container my-4">
+    <div class="row">
+        <div class="col-12">
+            <div class="jumbotron bg-primary text-white p-4 mb-4 border-radius-lg">
+                <h1 class="display-4">Интерактивная карта</h1>
+                <p class="lead">Исследуйте мир, ставьте метки и рисуйте маршруты</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Панель инструментов -->
+    <div class="row mb-3">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-body">
+                    <div class="btn-group" role="group">
+                        <button type="button" class="btn btn-outline-primary active-tool" id="panTool">
+                            🖱️ Перемещение
+                        </button>
+                        <button type="button" class="btn btn-outline-success" id="markerTool">
+                            📍 Метки
+                        </button>
+                        <button type="button" class="btn btn-outline-danger" id="clearAll">
+                            🗑️ Очистить всё
+                        </button>
+                    </div>
+                    <div class="mt-2">
+                        <small class="text-muted" id="currentTool">Текущий инструмент: Перемещение</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Контейнер карты -->
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-body p-0">
+                    <div class="map-container">
+                        <!-- SVG карта загружается здесь -->
+                        <div id="svgContainer"></div>
+
+                        <!-- Элементы управления -->
+                        <div class="map-controls">
+                            <div class="btn-group-vertical">
+                                <button class="btn btn-light tool-btn" id="zoomIn" title="Приблизить">
+                                    +
+                                </button>
+                                <button class="btn btn-light tool-btn" id="zoomOut" title="Отдалить">
+                                    -
+                                </button>
+                                <button class="btn btn-light tool-btn" id="resetView" title="Сбросить вид">
+                                    ↺
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Отображение зума -->
+                        <div class="zoom-display">
+                            Масштаб: <span id="zoomLevel">100%</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Список меток -->
+    <div class="row mt-4">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header">
+                    <h5 class="card-title mb-0">Мои метки</h5>
+                </div>
+                <div class="card-body">
+                    <div id="markersList">
+                        <p class="text-muted">Меток пока нет</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Футер -->
+<footer class="bg-dark text-white py-3 mt-4">
+    <div class="container text-center">
+        <p class="mb-0">Карта мира &copy; 2023</p>
+    </div>
+</footer>
+
+<!-- Модальное окно для создания метки -->
+<div class="modal fade" id="markerModal" tabindex="-1">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Создать метку</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="mb-3">
+                            <label for="markerTitle" class="form-label">Название метки</label>
+                            <input type="text" class="form-control" id="markerTitle" placeholder="Введите название">
+                        </div>
+                        <div class="mb-3">
+                            <label for="markerDescription" class="form-label">Описание</label>
+                            <textarea class="form-control" id="markerDescription" rows="3" placeholder="Введите описание"></textarea>
+                        </div>
+                        <div class="mb-3">
+                            <label for="markerColor" class="form-label">Цвет метки</label>
+                            <input type="color" class="form-control" id="markerColor" value="#dc3545">
+                        </div>
+                        <div class="mb-3">
+                            <label for="markerSize" class="form-label">Размер метки: <span id="sizeValue">30</span>px</label>
+                            <input type="range" class="form-range marker-size-control" id="markerSize" min="15" max="60" value="30">
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <label class="form-label">Тип метки:</label>
+                        <div class="row g-2" id="iconSelector">
+                            <!-- Иконки будут добавлены через JavaScript -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Отмена</button>
+                <button type="button" class="btn btn-primary" id="saveMarker">Сохранить метку</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Подключение Bootstrap JavaScript -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+
+<script>
+    // Библиотека иконок для фэнтези карт
+    const fantasyIcons = [
+        { emoji: '🚩', name: 'Группа', color: '#F0E68C', description: 'Группа приключенцев' },
+        { emoji: '🏰', name: 'Замок', color: '#8B4513', description: 'Королевский замок или крепость' },
+        { emoji: '🏘️', name: 'Город', color: '#2E8B57', description: 'Крупный город или столица' },
+        { emoji: '🏠', name: 'Деревня', color: '#228B22', description: 'Небольшая деревня или поселение' },
+        { emoji: '⚔️', name: 'Битва', color: '#DC143C', description: 'Место сражения или битвы' },
+        { emoji: '🏕️', name: 'Лагерь', color: '#DAA520', description: 'Временный лагерь или стоянка' },
+        { emoji: '🏔️', name: 'Горы', color: '#696969', description: 'Горный хребет или вершина' },
+        { emoji: '🌲', name: 'Лес', color: '#006400', description: 'Лесная чаща или роща' },
+        { emoji: '🏞️', name: 'Река', color: '#1E90FF', description: 'Река или водный поток' },
+        { emoji: '🌊', name: 'Озеро', color: '#4169E1', description: 'Озеро или водоём' },
+        { emoji: '🏺', name: 'Руины', color: '#8B7355', description: 'Древние руины или храм' },
+        { emoji: '🐉', name: 'Логово', color: '#4B0082', description: 'Логово дракона или монстра' },
+        { emoji: '💰', name: 'Сокровище', color: '#FFD700', description: 'Сокровище или клад' },
+        { emoji: '⚓', name: 'Порт', color: '#000080', description: 'Морской порт или гавань' },
+        { emoji: '🛡️', name: 'Форт', color: '#8B0000', description: 'Военный форт или застава' },
+        { emoji: '📜', name: 'Тайна', color: '#2F4F4F', description: 'Загадочное место или тайна' },
+        { emoji: '🔮', name: 'Магия', color: '#8A2BE2', description: 'Магическое место или источник' },
+        { emoji: '💀', name: 'Опасность', color: '#800000', description: 'Опасная зона или ловушка' },
+        { emoji: '⭐', name: 'Важное', color: '#FF8C00', description: 'Важное место или цель' },
+        { emoji: '🛒', name: 'Торговля', color: '#FF69B4', description: 'Рынок или торговая площадь' },
+        { emoji: '⛪', name: 'Храм', color: '#F0E68C', description: 'Храм или священное место' }
+    ];
+
+    class InteractiveMap {
+        constructor() {
+            this.container = document.querySelector('.map-container');
+            this.svgContainer = document.getElementById('svgContainer');
+            this.currentTool = 'pan';
+            this.scale = 1;
+            this.position = { x: 0, y: 0 };
+            this.isDragging = false;
+            this.dragStart = { x: 0, y: 0 };
+            this.markers = [];
+            this.paths = [];
+            this.isDrawing = false;
+            this.currentPath = null;
+            this.svgElement = null;
+            this.currentIcon = fantasyIcons[0];
+            this.markerSize = 30;
+
+            this.init();
+        }
+
+        async init() {
+            await this.loadSVG();
+            this.setupIconSelector();
+            this.setupEventListeners();
+            this.updateView();
+        }
+
+        setupIconSelector() {
+            const container = document.getElementById('iconSelector');
+            fantasyIcons.forEach((icon, index) => {
+                const col = document.createElement('div');
+                col.className = 'col-4 col-sm-3';
+                col.innerHTML = `
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="iconType"
+                                   id="icon${index}" value="${index}" ${index === 0 ? 'checked' : ''}>
+                            <label class="form-check-label" for="icon${index}">
+                                <span class="icon-emoji">${icon.emoji}</span>
+                                <small class="d-block">${icon.name}</small>
+                            </label>
+                        </div>
+                    `;
+                container.appendChild(col);
+            });
+
+            // Обработчик выбора иконки
+            document.querySelectorAll('input[name="iconType"]').forEach(radio => {
+                radio.addEventListener('change', (e) => {
+                    this.currentIcon = fantasyIcons[parseInt(e.target.value)];
+                    document.getElementById('markerColor').value = this.currentIcon.color;
+                });
+            });
+
+            // Обработчик размера метки
+            document.getElementById('markerSize').addEventListener('input', (e) => {
+                this.markerSize = parseInt(e.target.value);
+                document.getElementById('sizeValue').textContent = this.markerSize;
+            });
+        }
+
+        async loadSVG() {
+            try {
+                const response = await fetch('images/map.svg');
+                const svgText = await response.text();
+
+                this.svgContainer.innerHTML = svgText;
+                this.svgElement = this.svgContainer.querySelector('svg');
+
+                if (!this.svgElement) {
+                    throw new Error('SVG не найден в файле');
+                }
+
+                this.svgElement.style.width = '100%';
+                this.svgElement.style.height = '100%';
+                this.svgElement.style.cursor = 'grab';
+                this.svgElement.style.transformOrigin = '0 0';
+                this.svgElement.style.transition = 'transform 0.1s ease';
+
+                this.addInteractivityToSVG();
+
+            } catch (error) {
+                console.error('Ошибка загрузки SVG:', error);
+                this.svgContainer.innerHTML = `
+                        <div style="display: flex; align-items: center; justify-content: center; height: 100%; color: #666;">
+                            <div style="text-align: center;">
+                                <h4>Не удалось загрузить карту</h4>
+                                <p>Убедитесь, что файл map.svg находится в папке images/</p>
+                                <p>Ошибка: ${error.message}</p>
+                            </div>
+                        </div>
+                    `;
+            }
+        }
+
+        addInteractivityToSVG() {
+            const allElements = this.svgElement.querySelectorAll('*');
+
+            allElements.forEach(element => {
+                if (element.tagName === 'path' || element.tagName === 'polygon') {
+                    element.classList.add('svg-country');
+                } else if (element.tagName === 'circle') {
+                    element.classList.add('svg-city');
+                }
+
+                element.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    if (this.currentTool === 'select') {
+                        this.handleSVGElementClick(element);
+                    }
+                });
+            });
+        }
+
+        handleSVGElementClick(element) {
+            const previousSelected = this.svgElement.querySelector('.selected');
+            if (previousSelected) {
+                previousSelected.classList.remove('selected');
+            }
+
+            element.classList.add('selected');
+
+            const title = element.getAttribute('data-title') ||
+                element.getAttribute('aria-label') ||
+                element.id ||
+                'Элемент карты';
+
+            alert(`Выбрано: ${title}`);
+        }
+
+        setupEventListeners() {
+            // Инструменты
+            document.getElementById('panTool').addEventListener('click', () => this.setTool('pan'));
+            document.getElementById('markerTool').addEventListener('click', () => this.setTool('marker'));
+            document.getElementById('drawTool').addEventListener('click', () => this.setTool('draw'));
+            document.getElementById('selectTool').addEventListener('click', () => this.setTool('select'));
+            document.getElementById('clearAll').addEventListener('click', () => this.clearAll());
+
+            // Управление зумом
+            document.getElementById('zoomIn').addEventListener('click', () => this.zoom(0.2));
+            document.getElementById('zoomOut').addEventListener('click', () => this.zoom(-0.2));
+            document.getElementById('resetView').addEventListener('click', () => this.resetView());
+
+            // События контейнера карты
+            this.container.addEventListener('mousedown', this.handleMouseDown.bind(this));
+            this.container.addEventListener('mousemove', this.handleMouseMove.bind(this));
+            this.container.addEventListener('mouseup', this.handleMouseUp.bind(this));
+            this.container.addEventListener('wheel', this.handleWheel.bind(this));
+
+            // Предотвращение контекстного меню
+            this.container.addEventListener('contextmenu', (e) => e.preventDefault());
+        }
+
+        setTool(tool) {
+            document.querySelectorAll('.btn-group .btn').forEach(btn => {
+                btn.classList.remove('active-tool');
+            });
+            document.getElementById(tool + 'Tool').classList.add('active-tool');
+
+            this.currentTool = tool;
+            const toolNames = {
+                'pan': 'Перемещение',
+                'marker': 'Метки',
+                'draw': 'Рисование',
+                'select': 'Выделение'
+            };
+            document.getElementById('currentTool').textContent = `Текущий инструмент: ${toolNames[tool]}`;
+
+            if (this.svgElement) {
+                this.svgElement.style.cursor = tool === 'pan' ? 'grab' :
+                    tool === 'select' ? 'crosshair' : 'default';
+            }
+
+            if (tool !== 'draw' && this.isDrawing) {
+                this.finishDrawing();
+            }
+        }
+
+        handleMouseDown(e) {
+            if (!this.svgElement) return;
+
+            const rect = this.container.getBoundingClientRect();
+            const x = (e.clientX - rect.left - this.position.x) / this.scale;
+            const y = (e.clientY - rect.top - this.position.y) / this.scale;
+
+            if (this.currentTool === 'pan') {
+                this.isDragging = true;
+                this.dragStart = { x: e.clientX - this.position.x, y: e.clientY - this.position.y };
+                if (this.svgElement) this.svgElement.style.cursor = 'grabbing';
+            }
+            else if (this.currentTool === 'marker' && e.button === 0) {
+                this.createMarker(x, y);
+            }
+            else if (this.currentTool === 'draw' && e.button === 0) {
+                this.startDrawing(x, y);
+            }
+        }
+
+        handleMouseMove(e) {
+            if (this.isDragging && this.currentTool === 'pan') {
+                this.position.x = e.clientX - this.dragStart.x;
+                this.position.y = e.clientY - this.dragStart.y;
+                this.updateView();
+            }
+            else if (this.isDrawing && this.currentTool === 'draw') {
+                const rect = this.container.getBoundingClientRect();
+                const x = (e.clientX - rect.left - this.position.x) / this.scale;
+                const y = (e.clientY - rect.top - this.position.y) / this.scale;
+                this.continueDrawing(x, y);
+            }
+        }
+
+        handleMouseUp(e) {
+            if (this.isDragging) {
+                this.isDragging = false;
+                if (this.svgElement) this.svgElement.style.cursor = 'grab';
+            }
+            else if (this.isDrawing && this.currentTool === 'draw') {
+                this.finishDrawing();
+            }
+        }
+
+        handleWheel(e) {
+            e.preventDefault();
+            const delta = e.deltaY > 0 ? -0.1 : 0.1;
+            this.zoom(delta, e.clientX, e.clientY);
+        }
+
+        zoom(delta, centerX = null, centerY = null) {
+            const oldScale = this.scale;
+            this.scale = Math.max(0.1, Math.min(5, this.scale + delta));
+
+            if (centerX && centerY) {
+                const rect = this.container.getBoundingClientRect();
+                const mouseX = centerX - rect.left;
+                const mouseY = centerY - rect.top;
+
+                this.position.x = mouseX - (mouseX - this.position.x) * (this.scale / oldScale);
+                this.position.y = mouseY - (mouseY - this.position.y) * (this.scale / oldScale);
+            }
+
+            this.updateView();
+        }
+
+        updateView() {
+            if (this.svgElement) {
+                this.svgElement.style.transform = `translate(${this.position.x}px, ${this.position.y}px) scale(${this.scale})`;
+            }
+            document.getElementById('zoomLevel').textContent = `${Math.round(this.scale * 100)}%`;
+
+            this.markers.forEach(marker => {
+                marker.element.style.left = `${marker.x * this.scale + this.position.x}px`;
+                marker.element.style.top = `${marker.y * this.scale + this.position.y}px`;
+            });
+
+            this.paths.forEach(path => {
+                path.element.style.transform = `translate(${this.position.x}px, ${this.position.y}px) scale(${this.scale})`;
+            });
+        }
+
+        resetView() {
+            this.scale = 1;
+            this.position = { x: 0, y: 0 };
+            this.updateView();
+        }
+
+        createMarker(x, y) {
+            const modal = new bootstrap.Modal(document.getElementById('markerModal'));
+
+            // Сброс формы
+            document.getElementById('markerTitle').value = '';
+            document.getElementById('markerDescription').value = '';
+            document.getElementById('markerSize').value = '30';
+            document.getElementById('sizeValue').textContent = '30';
+
+            modal.show();
+
+            document.getElementById('saveMarker').onclick = () => {
+                const title = document.getElementById('markerTitle').value || this.currentIcon.name;
+                const description = document.getElementById('markerDescription').value || this.currentIcon.description;
+                const color = document.getElementById('markerColor').value;
+                const size = parseInt(document.getElementById('markerSize').value);
+
+                this.addMarker(x, y, title, description, color, size, this.currentIcon.emoji);
+                modal.hide();
+            };
+        }
+
+        addMarker(x, y, title, description, color, size, emoji) {
+            const marker = document.createElement('div');
+            marker.className = 'marker';
+            marker.style.width = `${size}px`;
+            marker.style.height = `${size}px`;
+            marker.style.fontSize = `${size * 0.7}px`;
+            marker.style.color = this.getContrastColor(color);
+            marker.style.backgroundColor = color;
+            marker.style.borderRadius = '50%';
+            marker.style.border = `2px solid ${this.getContrastColor(color)}`;
+            marker.setAttribute('data-title', title);
+            marker.textContent = emoji;
+
+            marker.addEventListener('click', (e) => {
+                e.stopPropagation();
+                if (confirm(`Удалить метку "${title}"?`)) {
+                    const index = this.markers.findIndex(m => m.element === marker);
+                    if (index > -1) {
+                        this.removeMarker(index);
+                    }
+                }
+            });
+
+            this.container.appendChild(marker);
+
+            const markerData = {
+                element: marker,
+                x: x,
+                y: y,
+                title: title,
+                description: description,
+                color: color,
+                size: size,
+                emoji: emoji,
+                type: this.currentIcon.name
+            };
+
+            this.markers.push(markerData);
+            this.updateView();
+            this.updateMarkersList();
+        }
+
+        getContrastColor(hexcolor) {
+            const r = parseInt(hexcolor.substr(1, 2), 16);
+            const g = parseInt(hexcolor.substr(3, 2), 16);
+            const b = parseInt(hexcolor.substr(5, 2), 16);
+            const brightness = ((r * 299) + (g * 587) + (b * 114)) / 1000;
+            return brightness > 128 ? '#000000' : '#FFFFFF';
+        }
+
+        startDrawing(x, y) {
+            this.isDrawing = true;
+
+            const pathSvg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+            pathSvg.className = 'drawing-path';
+            pathSvg.setAttribute('width', this.container.offsetWidth);
+            pathSvg.setAttribute('height', this.container.offsetHeight);
+            pathSvg.style.position = 'absolute';
+            pathSvg.style.top = '0';
+            pathSvg.style.left = '0';
+
+            const path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+            path.setAttribute('stroke', '#007bff');
+            path.setAttribute('stroke-width', '3');
+            path.setAttribute('fill', 'none');
+            path.setAttribute('stroke-linecap', 'round');
+            path.setAttribute('stroke-linejoin', 'round');
+            path.setAttribute('d', `M ${x} ${y}`);
+
+            pathSvg.appendChild(path);
+            this.container.appendChild(pathSvg);
+
+            this.currentPath = {
+                element: pathSvg,
+                path: path,
+                points: [{x, y}]
+            };
+        }
+
+        continueDrawing(x, y) {
+            if (!this.currentPath) return;
+
+            this.currentPath.points.push({x, y});
+            const d = this.currentPath.points.map((point, i) =>
+                `${i === 0 ? 'M' : 'L'} ${point.x} ${point.y}`
+            ).join(' ');
+
+            this.currentPath.path.setAttribute('d', d);
+        }
+
+        finishDrawing() {
+            this.isDrawing = false;
+            if (this.currentPath && this.currentPath.points.length > 1) {
+                this.paths.push(this.currentPath);
+            }
+            this.currentPath = null;
+        }
+
+        updateMarkersList() {
+            const list = document.getElementById('markersList');
+
+            if (this.markers.length === 0) {
+                list.innerHTML = '<p class="text-muted">Меток пока нет</p>';
+                return;
+            }
+
+            list.innerHTML = '';
+
+            this.markers.forEach((marker, index) => {
+                const item = document.createElement('div');
+                item.className = 'd-flex justify-content-between align-items-center p-2 border-bottom';
+                item.innerHTML = `
+                        <div class="d-flex align-items-center">
+                            <span style="font-size: 20px; margin-right: 10px;">${marker.emoji}</span>
+                            <div>
+                                <strong>${marker.title}</strong>
+                                <br>
+                                <small class="text-muted">${marker.type} • ${marker.size}px</small>
+                                ${marker.description ? `<br><small class="text-muted">${marker.description}</small>` : ''}
+                            </div>
+                        </div>
+                        <button class="btn btn-sm btn-outline-danger delete-marker" data-index="${index}">
+                            Удалить
+                        </button>
+                    `;
+                list.appendChild(item);
+            });
+
+            document.querySelectorAll('.delete-marker').forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    const index = parseInt(e.target.dataset.index);
+                    this.removeMarker(index);
+                });
+            });
+        }
+
+        removeMarker(index) {
+            if (this.markers[index]) {
+                this.markers[index].element.remove();
+                this.markers.splice(index, 1);
+                this.updateMarkersList();
+            }
+        }
+
+        clearAll() {
+            if (confirm('Вы уверены, что хотите удалить все метки и рисунки?')) {
+                this.markers.forEach(marker => marker.element.remove());
+                this.markers = [];
+
+                this.paths.forEach(path => path.element.remove());
+                this.paths = [];
+
+                if (this.svgElement) {
+                    const selected = this.svgElement.querySelector('.selected');
+                    if (selected) selected.classList.remove('selected');
+                }
+
+                this.updateMarkersList();
+            }
+        }
+    }
+
+    // Инициализация карты после загрузки страницы
+    document.addEventListener('DOMContentLoaded', () => {
+        new InteractiveMap();
+    });
+</script>
+</body>
+</html>
