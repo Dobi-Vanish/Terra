@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Лист персонажа</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    .dice-result {
+      font-size: 1.5rem;
+      font-weight: bold;
+      min-height: 60px;
+      border: 2px dashed #007bff;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #f8f9fa;
+    }
+    .dice-history {
+      max-height: 200px;
+      overflow-y: auto;
+      font-size: 0.9rem;
+    }
+    .dice-animation {
+      animation: diceRoll 0.5s ease-in-out;
+    }
+    @keyframes diceRoll {
+      0% { transform: rotate(0deg) scale(1); }
+      50% { transform: rotate(180deg) scale(1.2); }
+      100% { transform: rotate(360deg) scale(1); }
+    }
+  </style>
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <div class="container">
+    <a class="navbar-brand" href="index.html">RPG Мир</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link" href="index.html">Главная</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="races.html">Расы</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="classes.html">Классы</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link " href="religions.html">Религии</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="applications.html">Анкеты</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="mechanics.html">Механики</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="abilities.html">Способности</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="sheet.html">Лист игрока</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="multirace.html">Генератор полукровок</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" href="diceroller.html">Dice roller</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- Dice Roller -->
+<div class="container py-4">
+  <div class="card mb-4">
+    <div class="card-header bg-warning text-dark">
+      <h3 class="mb-0">🎲 Бросок кубиков</h3>
+    </div>
+    <div class="card-body">
+      <!-- Основной блок броска -->
+      <div class="row mb-4">
+        <div class="col-md-6">
+          <div class="mb-3">
+            <label class="form-label">Формат броска:</label>
+            <div class="input-group">
+              <input type="text" class="form-control" id="diceNotation" placeholder="2d6+3" value="1d20">
+              <button class="btn btn-primary" type="button" id="rollDice">Бросить</button>
+            </div>
+            <small class="form-text text-muted">
+              Примеры: 1d20, 2d6+3, 4d10-2, d100
+            </small>
+          </div>
+
+          <!-- Быстрые кнопки -->
+          <div class="mb-3">
+            <label class="form-label">Быстрые броски:</label>
+            <div class="btn-group d-flex flex-wrap" role="group">
+              <button type="button" class="btn btn-outline-secondary dice-quick" data-dice="1d20">d20</button>
+              <button type="button" class="btn btn-outline-secondary dice-quick" data-dice="1d100">d100</button>
+              <button type="button" class="btn btn-outline-secondary dice-quick" data-dice="2d6">2d6</button>
+              <button type="button" class="btn btn-outline-secondary dice-quick" data-dice="3d6">3d6</button>
+              <button type="button" class="btn btn-outline-secondary dice-quick" data-dice="4d6">4d6</button>
+              <button type="button" class="btn btn-outline-secondary dice-quick" data-dice="1d4">d4</button>
+              <button type="button" class="btn btn-outline-secondary dice-quick" data-dice="1d8">d8</button>
+              <button type="button" class="btn btn-outline-secondary dice-quick" data-dice="1d10">d10</button>
+              <button type="button" class="btn btn-outline-secondary dice-quick" data-dice="1d12">d12</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-6">
+          <div class="dice-result text-center p-3" id="diceResult">
+            Нажмите "Бросить"
+          </div>
+          <div class="mt-2 text-center">
+            <small class="text-muted" id="diceDetails"></small>
+          </div>
+        </div>
+      </div>
+
+      <!-- История бросков -->
+      <div class="row">
+        <div class="col-20">
+          <h6>История бросков:</h6>
+          <div class="dice-history card" id="diceHistory">
+            <div class="card-body">
+              <p class="text-muted mb-0">Здесь будут отображаться ваши броски</p>
+            </div>
+          </div>
+          <button class="btn btn-sm btn-outline-secondary mt-2" id="clearHistory">
+            Очистить историю
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer class="bg-dark text-white text-center py-3">
+  <div class="container">
+    <p class="mb-0">Лист персонажа RPG &copy; 2023</p>
+  </div>
+</footer>
+<script>
+  // Dice Roller Logic
+  class DiceRoller {
+    constructor() {
+      this.history = [];
+      this.init();
+    }
+
+    init() {
+      // Обработчик основного броска
+      document.getElementById('rollDice').addEventListener('click', () => {
+        this.roll(document.getElementById('diceNotation').value);
+      });
+
+      // Обработчики быстрых кнопок
+      document.querySelectorAll('.dice-quick').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+          const notation = e.target.getAttribute('data-dice');
+          document.getElementById('diceNotation').value = notation;
+          this.roll(notation);
+        });
+      });
+
+      // Enter в поле ввода
+      document.getElementById('diceNotation').addEventListener('keypress', (e) => {
+        if (e.key === 'Enter') {
+          this.roll(e.target.value);
+        }
+      });
+
+      // Очистка истории
+      document.getElementById('clearHistory').addEventListener('click', () => {
+        this.history = [];
+        this.updateHistory();
+      });
+    }
+
+    roll(notation) {
+      try {
+        const result = this.parseDiceNotation(notation);
+        this.displayResult(result, notation);
+        this.addToHistory(result, notation);
+      } catch (error) {
+        this.displayError(error.message);
+      }
+    }
+
+    parseDiceNotation(notation) {
+      // Приводим к стандартному формату
+      notation = notation.toLowerCase().replace(/\s+/g, '');
+
+      // Если просто dN - добавляем 1
+      if (notation.startsWith('d')) {
+        notation = '1' + notation;
+      }
+
+      // Регулярное выражение для парсинга: XdY+Z или XdY-Z
+      const match = notation.match(/^(\d+)d(\d+)([+-]\d+)?$/);
+
+      if (!match) {
+        throw new Error('Неверный формат. Используйте: XdY+Z');
+      }
+
+      const count = parseInt(match[1]);
+      const sides = parseInt(match[2]);
+      const modifier = match[3] ? parseInt(match[3]) : 0;
+
+      if (count < 1 || count > 100) {
+        throw new Error('Количество кубиков должно быть от 1 до 100');
+      }
+
+      if (sides < 2 || sides > 1000) {
+        throw new Error('Грани кубика должны быть от 2 до 1000');
+      }
+
+      // Бросаем кубики
+      const rolls = [];
+      let total = 0;
+
+      for (let i = 0; i < count; i++) {
+        const roll = Math.floor(Math.random() * sides) + 1;
+        rolls.push(roll);
+        total += roll;
+      }
+
+      total += modifier;
+
+      return {
+        notation,
+        count,
+        sides,
+        modifier,
+        rolls,
+        total,
+        timestamp: new Date()
+      };
+    }
+
+    displayResult(result, originalNotation) {
+      const resultElement = document.getElementById('diceResult');
+      const detailsElement = document.getElementById('diceDetails');
+
+      // Анимация
+      resultElement.classList.add('dice-animation');
+      setTimeout(() => {
+        resultElement.classList.remove('dice-animation');
+      }, 500);
+
+      // Отображаем результат
+      resultElement.textContent = result.total;
+      resultElement.className = 'dice-result text-center p-3';
+
+      // Добавляем цвет в зависимости от результата
+      if (result.sides === 20) {
+        if (result.rolls[0] === 20) {
+          resultElement.classList.add('text-danger');
+          resultElement.innerHTML = result.total + ' <small>💥 Промах!</small>';
+        } else if (result.rolls[0] === 1) {
+          resultElement.classList.add('text-success');
+          resultElement.innerHTML = result.total + ' <small>🎯 Крит!</small>';
+        }
+      }
+
+      // Детали броска
+      let details = `${result.count}d${result.sides}`;
+      if (result.modifier !== 0) {
+        details += result.modifier > 0 ? `+${result.modifier}` : result.modifier;
+      }
+      details += ` = [${result.rolls.join(', ')}]`;
+      if (result.modifier !== 0) {
+        details += ` ${result.modifier > 0 ? '+' : ''}${result.modifier}`;
+      }
+
+      detailsElement.textContent = details;
+    }
+
+    displayError(message) {
+      const resultElement = document.getElementById('diceResult');
+      resultElement.textContent = 'Ошибка';
+      resultElement.className = 'dice-result text-center p-3 text-danger';
+      document.getElementById('diceDetails').textContent = message;
+    }
+
+    addToHistory(result, originalNotation) {
+      this.history.unshift({
+        notation: originalNotation,
+        result: result,
+        timestamp: new Date()
+      });
+
+      // Ограничиваем историю 50 записями
+      if (this.history.length > 50) {
+        this.history = this.history.slice(0, 50);
+      }
+
+      this.updateHistory();
+    }
+
+    updateHistory() {
+      const historyElement = document.getElementById('diceHistory');
+      const historyBody = historyElement.querySelector('.card-body');
+
+      if (this.history.length === 0) {
+        historyBody.innerHTML = '<p class="text-muted mb-0">Здесь будут отображаться ваши броски</p>';
+        return;
+      }
+
+      let html = '';
+      this.history.forEach((item, index) => {
+        const time = item.timestamp.toLocaleTimeString();
+        const details = `${item.result.count}d${item.result.sides}`;
+        const rolls = item.result.rolls.join(', ');
+        const modifier = item.result.modifier !== 0 ?
+                ` ${item.result.modifier > 0 ? '+' : ''}${item.result.modifier}` : '';
+
+        html += `
+                        <div class="d-flex justify-content-between align-items-center border-bottom pb-2 mb-2 ${index === 0 ? 'text-primary' : ''}">
+                            <div>
+                                <strong>${item.notation}</strong>
+                                <small class="text-muted"> = ${rolls}${modifier}</small>
+                            </div>
+                            <div class="text-end">
+                                <strong class="${index === 0 ? 'h5' : ''}">${item.result.total}</strong>
+                                <br>
+                                <small class="text-muted">${time}</small>
+                            </div>
+                        </div>
+                    `;
+      });
+
+      historyBody.innerHTML = html;
+    }
+  }
+
+  // Инициализация всех компонентов при загрузке страницы
+  document.addEventListener('DOMContentLoaded', function() {
+    // Инициализация dice roller
+    new DiceRoller();
+
+    // Ваш существующий код инициализации...
+    updateDerivedStats();
+    addItem();
+
+    // Добавляем обработчики событий для всех полей ввода характеристик
+    document.querySelectorAll('.attr-value, .attr-modifier').forEach(input => {
+      input.addEventListener('input', function() {
+        const attr = this.getAttribute('data-attr');
+        calculateTotal(attr);
+      });
+    });
+
+    // Остальной ваш JavaScript код...
+  });
+
+</script>
+</body>
+</html>
